@@ -1,0 +1,58 @@
+%%% beispiel.tex --- 
+
+%% Author: s_kaul01@PRIS
+%% Version: $Id: beispiel.tex,v 0.0 2010/02/10 14:23:59 s_kaul01 Exp$
+
+
+\documentclass{beamer}
+\usepackage[T1]{fontenc}
+
+
+ \usepackage{wwustyle}
+
+\usepackage{ngerman}
+
+\usepackage[utf8]{inputenc}
+
+
+%%\revision$Header: /u/s_kaul01/tmp/beispiel.tex,v 0.0 2010/02/10 14:23:59 s_kaul01 Exp$
+
+\newmaincolor{pantone3282}
+% falls die Schriftart MetaNormal nicht vorhanden ist:
+%\renewcommand{\claim}[2]{}
+
+
+\author{Max Mustermann}
+\title{Zur Benutzung der WWU-Beamer Vorlage!}
+\begin{document}
+
+
+%%%%##########################################################################
+
+\begin{frame}[plain]
+  \maketitle
+\end{frame}
+
+\begin{frame}
+  \frametitle{Folientitel sollten kurz und pr\"agnant sein}
+  \begin{block}{Hervorhebungen}
+    \textbf{Wenn man Dinge hervorheben m\"ochte nutzt man entweder Fettdruck,}
+    \textit{ kursive Schrift} \alert{ oder das Schl\"usselwort ``alert''}.
+
+  Auch ``itemize''-Umgebungen werden von der Stilvorlage überschrieben:
+  \end{block}
+  \pause
+  \begin{itemize}
+    \item So wird sichergestellt,
+    \item dass alle Elemente der Präsentation 
+    \item dieselbe Farbe nutzen.
+  \end{itemize}
+\end{frame}
+
+
+
+
+
+%%%%##########################################################################
+
+\end{document}

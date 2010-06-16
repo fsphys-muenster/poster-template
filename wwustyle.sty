@@ -1,0 +1,354 @@
+\ProvidesPackage{wwustyle}
+%Package wwustyle
+%
+% A beamer style file following the corporate design of the WWU
+% Muenster.
+%
+%
+%
+%
+% Version: 0.2 (11.06.2010) One may now use a non-standart font size
+%                           in his document, the style does not get
+%                           corrupted anymore.
+%                           Added fontenc as requirement, some things 
+%                           lock better with it.
+%                           Removed institute from title page, looked too
+%                           crowded.
+% Version: 0.1 (13.02.2010) Initial version
+% Usage:    Just put \usepackage{wwustyle} in the header of your tex
+%               file, thats all!
+%               You may reset the main color by putting
+%               \newmaincolor{COLORCODE}
+%               in the header of your file, where COLORCODE is the
+%               name of the color (in one word, all in small letters) 
+%               as defined in the corporate design manual which is 
+%               to be found on the web:
+%               http://www.wwu.de/corporate-design/
+% Remark: This uses the MetaNormal font, which is to be found as
+%               a latex font on the homepage of the WWU.
+% Author:  Sven Kaulmann (Comments, etc are welcome to 
+%               sven.kaulmann@uni-muenster.de)
+
+
+%% ========= Required Packages =============
+% for the graphics
+\RequirePackage{tikz}
+\RequirePackage{xxcolor}
+
+%% use MetaRoman Normal as the standart non-serif font
+\RequirePackage{meta}
+\RequirePackage[T1]{fontenc}
+\renewcommand{\sfdefault}{fMt}
+
+%% the package soul is needed for letter spacing control
+\RequirePackage{soul}
+% define the caps font used in the logo
+\capsdef{////}{\scshape}{.039em}{.4em}{.2em}
+
+
+%% ========= Images and Graphics ============
+
+% the claim as a tikzpicture, it uses two parameters:
+%% \parameter 1 the scale
+%% \parameter 2 the rotation
+\newcommand{\claim}[2]{
+\begin{tikzpicture}[scale=#1, node distance=5.25ex, rotate=#2, transform shape]
+  %% wissen
+  \node (wissen)  {\textcolor{pantoneblack7}{wissen}};
+  %% Punkt
+  \node [circle,
+    minimum width=0.39ex,
+    inner sep=0,
+    fill=maincolor, 
+    yshift=-0.571ex, 
+    xshift=-1.94ex, 
+    right of=wissen] (Punkt) {};
+  %% leben
+  \node[
+    xshift=0.75ex,
+    right of=wissen] (leben) {\textcolor{pantoneblack7}{leben}};
+  %% WWU
+  \node[
+    xshift=-0.25ex,
+    yshift=3.4ex,
+    below of=wissen] (WWU) {\textcolor{pantoneblack7!50}{WWU}};
+  %% Münster
+  \node[
+    xshift=1.0ex,
+    right of=WWU] {\textcolor{pantoneblack7!50}{M\"unster}};
+\end{tikzpicture}
+} % end of newcommand
+
+%% the logo as tikzpicture, is takes one parameter
+%% \parameter 1 the scale
+\newcommand{\wwulogo}[1]{
+  \begin{tikzpicture}[
+    node distance=1.0ex,
+    transform shape,
+    scale=#1]
+    \tikzstyle{every node}=[inner sep=0mm]
+    % the first bar
+  \node[rectangle,
+             minimum height=0.75ex,
+             minimum width=0.35ex,
+             fill=pantoneblack7] (bar)  {};
+  % the second bar
+  \node[below of = bar,
+            rectangle,
+            minimum height=0.35ex,
+            minimum width=1.39ex,
+            yshift=0.13ex,
+            fill=pantoneblack7] {};
+  % the third bar
+  \node[below of = bar,
+             rectangle,
+             minimum height=0.75ex,
+             minimum width=2.4ex,
+             yshift=-1.575ex,
+             fill=pantoneblack7] {};
+  % the fourth bar
+  \node[below left of=bar,
+            rectangle,
+            minimum height=0.73ex,
+            minimum width=9.38ex,
+            yshift=-3.335ex,
+            xshift=-6.34ex,
+            fill=pantoneblack7] {};
+  % the fifth bar
+  \node[below left of=bar,
+             rectangle,
+             minimum height=0.73ex,
+             minimum width=9.38ex,
+             yshift=-3.335ex,
+             xshift=7.78ex,
+             fill=pantoneblack7] {};
+  % the sixth bar
+  \node[below of=bar,
+             rectangle,
+             minimum height=0.35ex,
+             minimum width=23.5ex,
+             yshift=-4.92ex,
+             fill=pantoneblack7] {};
+  % the  seventh bar
+  \node[below of=bar,
+             rectangle,
+             minimum height=0.73ex,
+             minimum width=23.5ex,
+             yshift=-8.225ex,
+             fill=pantoneblack7] {};
+  % Westfälische
+  \node[below left of=bar,
+             yshift=-3.61ex,
+             xshift=20.85ex] {\caps{\textbf{Westf\"alische}}\relax}; % 'relax' is needed here to surpress an error
+  % Wilhelms-Universität
+  \node[below left of=bar,
+             yshift=-5.91ex,
+             xshift=25.1ex] {\caps{\textbf{Wilhelms-Universit\"at}}\relax};
+  % Münster
+  \node[below left of=bar,
+             yshift=-8.19ex,
+             xshift=18.65ex] {\caps{\textbf{M\"unster}}\relax};
+
+  \end{tikzpicture}
+} % end of the logo
+
+%% ============ Margins, spacing, etc ============
+\setbeamersize{text margin right=2mm, text margin left=7.50mm}  % text margin
+% switch of the navigation symbols
+\setbeamertemplate{navigation symbols}{}
+% set the right side width so the logo fits there
+\setbeamersize{sidebar width right=1.1cm}
+\setbeamertemplate{sidebar right}{\hfill\vfill\begin{colormixin}{25!white}
+    \claim{3.39}{90}
+  \end{colormixin}}
+%% ============ Color definitions ================
+
+% colors to be used
+\definecolor{text-grey}{rgb}{0.45, 0.45, 0.45} % grey text on white background
+\definecolor{fu-blue}{RGB}{0, 51, 102} % blue text
+\definecolor{fu-green}{RGB}{153, 204, 0} % green text
+\definecolor{fu-red}{RGB}{204, 0, 0} % red text (used by \alert)
+% colors used as "main color", for definitions see
+% WWU corporate design manual
+\definecolor{pantoneblack7}{RGB}{62,62,59}
+\definecolor{pantone312}{RGB}{0,157,209}
+\definecolor{pantone315}{RGB}{0,110,137}
+\definecolor{pantone3282}{RGB}{0,142,150}
+\definecolor{pantone369}{RGB}{122,181,22}
+\definecolor{pantone390}{RGB}{177,200,0}
+\definecolor{pantone396}{RGB}{223,219,0}
+\definecolor{pantoneprozessyellow}{RGB}{255,237,0}
+% set the default main color 
+\definecolor{maincolor}{named}{pantone390}
+% command to reset the main color externally
+\newcommand{\newmaincolor}[1]{
+\definecolor{maincolor}{named}{#1}
+}
+
+
+%% ================= Redefinition of Styles ============
+% colors
+\usecolortheme{lily}
+\setbeamercolor*{normal text}{fg=pantoneblack7,bg=white}
+\setbeamercolor*{alerted text}{fg=fu-red}
+\setbeamercolor*{example text}{fg=fu-green}
+\setbeamercolor*{structure}{fg=maincolor}
+
+\setbeamercolor*{block title}{fg=white,bg=maincolor}
+\setbeamercolor*{block title alerted}{fg=white,bg=pantoneblack7!50}
+\setbeamercolor*{block title example}{fg=white,bg=pantoneblack7!50}
+
+\setbeamercolor*{block body}{bg=pantoneblack7!10}
+\setbeamercolor*{block body alerted}{bg=pantoneblack7!10}
+\setbeamercolor*{block body example}{bg=pantoneblack7!10}
+
+\setbeamercolor{bibliography entry author}{fg=fu-blue}
+% TODO: this doesn't work at all:
+\setbeamercolor{bibliography entry journal}{fg=text-grey}
+\setbeamercolor{item}{fg=maincolor}
+
+% frame title
+\setbeamertemplate{frametitle}{
+  \fontsize{14pt}{1pt}
+  \selectfont
+
+    \hskip-2.4mm 
+    \color{maincolor}
+    \begin{minipage}[b][20pt]{\textwidth}
+      \textgreater\,\insertframetitle
+    \end{minipage}
+}
+% headline
+\setbeamertemplate{headline}{
+  \fontsize{6pt}{1pt}
+  \selectfont
+
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[xshift=2.75cm,yshift=-0.75cm] at (current page.north west) {\wwulogo{0.9}};
+  \end{tikzpicture}
+  \hfill
+  \insertshorttitle 
+  \hskip2mm %title on the right
+  \parbox[b]{10mm}{
+    {\color{maincolor}\rule{0.8pt}{12mm} }
+    \insertframenumber /\inserttotalframenumber
+  }
+}% end headline
+
+% title page
+\setbeamertemplate{title page}{
+  \fontsize{11pt}{1pt}
+  \selectfont
+  \setlength{\leftmargin}{0mm}% 
+  %% set the title and the author
+  \setlength{\unitlength}{1mm}
+
+  \begin{picture}(0,0)
+    \put(-2.5,8){\parbox[c]{10.75cm}{
+        \fontsize{16pt}{14pt}
+        \selectfont
+        \color{maincolor}
+        \inserttitle
+        \par
+        \color{black}
+        \fontsize{9pt}{14pt}
+        \selectfont
+        \insertsubtitle
+        \par
+      }
+    }
+    \linespread{0.9}
+     \put(42.5,-50.7){\parbox[c]{4cm}{\color{black}\insertauthor}}
+     \put(90,-50.7){\parbox[c]{4cm}{\color{black}\insertdate}}
+
+%     \put(25,-53.7){\parbox[c]{3cm}{\color{black}\insertauthor}}
+%    \put(60,-53.7){\parbox[c]{3cm}{\color{black}\small \insertinstitute}}
+%     \put(90,-53.7){\parbox[c]{4cm}{\color{black}\insertdate}}
+
+  \end{picture}
+
+  \newlength{\mypagewidth}
+  \setlength{\mypagewidth}{14cm}
+  \begin{tikzpicture}[remember picture,overlay]
+    %% the 1. rectangle
+    \node [xshift=12.7cm,yshift=-1.95cm] at (current page.north west)
+    [rectangle, 
+    inner sep=0mm,
+    minimum height=0.45cm,
+    minimum width=0.19cm,
+    fill=maincolor
+    ] {};
+
+    %% the 2. rectangle
+    \node [xshift=12.53cm,yshift=-2.49cm] at (current page.north west)
+    [rectangle, 
+    inner sep=0mm,
+    minimum height=0.21cm,
+    minimum width=0.53cm,
+    fill=maincolor
+    ] {};
+    %% the 3. rectangle
+    \node [xshift=12.38cm,yshift=-3.54cm] at (current page.north west)
+    [rectangle, 
+    inner sep=0,
+    minimum height=0.45cm,
+    minimum width=0.85cm,
+    fill=maincolor
+    ] {};
+    %% the 4. rectangle
+    \node [xshift=5.6cm,yshift=-4.45cm] at (current page.north west)
+    [rectangle, 
+    inner sep=0,
+    minimum height=0.45cm,
+    minimum width=11.25cm,
+    fill=maincolor
+    ] {};
+    %% the 5. rectangle
+    \node [xshift=6.45cm,
+    yshift=-5.62cm] at (current page.north west)
+    [rectangle, 
+    inner sep=0mm,
+    minimum height=0.22cm,
+    minimum width=\mypagewidth,
+    fill=maincolor
+    ] {};
+    %% the 6. rectangle
+    \node [xshift=6.6cm,yshift=-7.65cm] at (current page.north west)
+    [rectangle, 
+    inner sep=0,
+    minimum height=0.45cm,
+    minimum width=\mypagewidth,
+    fill=maincolor
+    ] {};
+    %% the claim
+    \node [xshift=1.72cm,yshift=-8.79cm] at (current page.north west)
+    (claim) {\claim{1}{0}};
+    %% the logo
+    \node [xshift=3.225cm,yshift=-1cm] at (current page.north west)
+    {\wwulogo{0.6}};
+
+  \end{tikzpicture}
+
+} %end title page
+
+
+
+% footline
+\setbeamertemplate{footline}{
+  \fontsize{6pt}{1pt}
+  \selectfont
+
+  \vskip5pt
+  \color{maincolor}
+  \rule{\textwidth}{1.2pt}\\ % horizontal line
+  \vskip2pt
+  \rule{\textwidth}{0.8pt}\\ % horizontal line
+  \vskip4pt
+  \rule{\textwidth}{1.2pt} % horizontal line
+  \vskip2pt
+  \color{black}
+  \hspace{4.5mm}
+  \insertshortauthor
+  \vskip4pt
+}% end footline
+
