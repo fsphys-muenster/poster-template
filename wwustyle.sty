@@ -6,7 +6,10 @@
 %
 %
 %
-%
+% Version: 0.3 (06.07.2010) The colors are now set via package
+%                           options, see Usage-section for details.
+%                           Furthermore, using the option "wide" one
+%                           can create presentations in 16:10 format.
 % Version: 0.2 (11.06.2010) One may now use a non-standart font size
 %                           in his document, the style does not get
 %                           corrupted anymore.
@@ -15,19 +18,21 @@
 %                           Removed institute from title page, looked too
 %                           crowded.
 % Version: 0.1 (13.02.2010) Initial version
+%
 % Usage:    Just put \usepackage{wwustyle} in the header of your tex
-%               file, thats all!
-%               You may reset the main color by putting
-%               \newmaincolor{COLORCODE}
-%               in the header of your file, where COLORCODE is the
-%               name of the color (in one word, all in small letters) 
-%               as defined in the corporate design manual which is 
-%               to be found on the web:
-%               http://www.wwu.de/corporate-design/
-% Remark: This uses the MetaNormal font, which is to be found as
-%               a latex font on the homepage of the WWU.
-% Author:  Sven Kaulmann (Comments, etc are welcome to 
-%               sven.kaulmann@uni-muenster.de)
+%           file, thats all!
+%           You may reset the main color by using COLORCODE
+%           as an option to the package, where COLORCODE is the
+%           name of the color (in one word, all in small letters) 
+%           as defined in the corporate design manual which is 
+%           to be found on the web:
+%           http://www.wwu.de/corporate-design/
+%           Furthermore, if you choose the option "wide", you will get
+%           presentations in 16:10. 
+% Remark:   This uses the MetaNormal font, which is to be found as
+%           a latex font on the homepage of the WWU.
+% Author:   Sven Kaulmann (Comments, etc are welcome to 
+%           sven.kaulmann@uni-muenster.de)
 
 
 %% ========= Required Packages =============
@@ -44,6 +49,35 @@
 \RequirePackage{soul}
 % define the caps font used in the logo
 \capsdef{////}{\scshape}{.039em}{.4em}{.2em}
+
+% set pantone390 as the default main color 
+\definecolor{maincolor}{RGB}{177,200,0}
+
+%% ========= Possible options ==============
+% create a presentation in 16 to 10 format
+\DeclareOption{wide}{%
+  \geometry{paperwidth=15.36cm,paperheight=9.6cm}
+}
+% set the main color
+% for the color definitions see
+% WWU corporate design manual
+\DeclareOption{pantoneblack7}{
+\definecolor{maincolor}{RGB}{62,62,59}}
+\DeclareOption{pantone312}{
+\definecolor{maincolor}{RGB}{0,157,209}}
+\DeclareOption{pantone315}{
+\definecolor{maincolor}{RGB}{0,110,137}}
+\DeclareOption{pantone3282}{
+\definecolor{maincolor}{RGB}{0,142,150}}
+\DeclareOption{pantone369}{
+\definecolor{maincolor}{RGB}{122,181,22}}
+\DeclareOption{pantone390}{
+\definecolor{maincolor}{RGB}{177,200,0}}
+\DeclareOption{pantone396}{
+\definecolor{maincolor}{RGB}{223,219,0}}
+\DeclareOption{pantoneprozessyellow}{
+\definecolor{maincolor}{RGB}{255,237,0}}
+\ProcessOptions\relax
 
 
 %% ========= Images and Graphics ============
@@ -168,22 +202,8 @@
 \definecolor{fu-blue}{RGB}{0, 51, 102} % blue text
 \definecolor{fu-green}{RGB}{153, 204, 0} % green text
 \definecolor{fu-red}{RGB}{204, 0, 0} % red text (used by \alert)
-% colors used as "main color", for definitions see
-% WWU corporate design manual
 \definecolor{pantoneblack7}{RGB}{62,62,59}
-\definecolor{pantone312}{RGB}{0,157,209}
-\definecolor{pantone315}{RGB}{0,110,137}
-\definecolor{pantone3282}{RGB}{0,142,150}
-\definecolor{pantone369}{RGB}{122,181,22}
-\definecolor{pantone390}{RGB}{177,200,0}
-\definecolor{pantone396}{RGB}{223,219,0}
-\definecolor{pantoneprozessyellow}{RGB}{255,237,0}
-% set the default main color 
-\definecolor{maincolor}{named}{pantone390}
-% command to reset the main color externally
-\newcommand{\newmaincolor}[1]{
-\definecolor{maincolor}{named}{#1}
-}
+
 
 
 %% ================= Redefinition of Styles ============
@@ -271,7 +291,7 @@
   \setlength{\mypagewidth}{14cm}
   \begin{tikzpicture}[remember picture,overlay]
     %% the 1. rectangle
-    \node [xshift=12.7cm,yshift=-1.95cm] at (current page.north west)
+    \node [xshift=-0.1cm,yshift=-1.95cm] at (current page.north east)
     [rectangle, 
     inner sep=0mm,
     minimum height=0.45cm,
@@ -280,7 +300,7 @@
     ] {};
 
     %% the 2. rectangle
-    \node [xshift=12.53cm,yshift=-2.49cm] at (current page.north west)
+    \node [xshift=-0.27cm,yshift=-2.49cm] at (current page.north east)
     [rectangle, 
     inner sep=0mm,
     minimum height=0.21cm,
@@ -288,7 +308,7 @@
     fill=maincolor
     ] {};
     %% the 3. rectangle
-    \node [xshift=12.38cm,yshift=-3.54cm] at (current page.north west)
+    \node [xshift=-0.415cm,yshift=-3.54cm] (thirdrec) at (current page.north east)
     [rectangle, 
     inner sep=0,
     minimum height=0.45cm,
@@ -296,30 +316,17 @@
     fill=maincolor
     ] {};
     %% the 4. rectangle
-    \node [xshift=5.6cm,yshift=-4.45cm] at (current page.north west)
-    [rectangle, 
-    inner sep=0,
-    minimum height=0.45cm,
-    minimum width=11.25cm,
-    fill=maincolor
-    ] {};
+    \node[xshift=-1.15cm, yshift=-0.46cm] (helpernode4) at (thirdrec.south){};
+    \fill[maincolor] (current page.west)+(0,0.12cm)
+    rectangle (helpernode4);
     %% the 5. rectangle
-    \node [xshift=6.45cm,
-    yshift=-5.62cm] at (current page.north west)
-    [rectangle, 
-    inner sep=0mm,
-    minimum height=0.22cm,
-    minimum width=\mypagewidth,
-    fill=maincolor
-    ] {};
+    \node[yshift=-0.71cm] (helpernode5) at (current page.east){};
+    \fill[maincolor] (current page.west)+(0,-0.94cm)
+    rectangle (helpernode5);
     %% the 6. rectangle
-    \node [xshift=6.6cm,yshift=-7.65cm] at (current page.north west)
-    [rectangle, 
-    inner sep=0,
-    minimum height=0.45cm,
-    minimum width=\mypagewidth,
-    fill=maincolor
-    ] {};
+    \node[yshift=-3.08cm] (helpernode6) at (current page.east){};
+    \fill[maincolor] (current page.west)++(0,-2.63cm)
+    rectangle (helpernode6);
     %% the claim
     \node [xshift=1.72cm,yshift=-8.79cm] at (current page.north west)
     (claim) {\claim{1}{0}};
