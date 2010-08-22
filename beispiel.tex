@@ -8,16 +8,16 @@
 \usepackage[T1]{fontenc}
 
 
- \usepackage{wwustyle}
+ \usepackage[pantone3282]{wwustyle}
 
-\usepackage{ngerman}
+%\usepackage[ngerman]{babel}
+\usepackage[english]{babel}
 
 \usepackage[utf8]{inputenc}
 
 
 %%\revision$Header: /u/s_kaul01/tmp/beispiel.tex,v 0.0 2010/02/10 14:23:59 s_kaul01 Exp$
 
-\newmaincolor{pantone3282}
 % falls die Schriftart MetaNormal nicht vorhanden ist:
 %\renewcommand{\claim}[2]{}
 
@@ -49,9 +49,19 @@
   \end{itemize}
 \end{frame}
 
+\begin{frame}
+  \frametitle{Ein Alerted-Block}
+  \begin{alertblock}{Achtung!}
+    Hier kommt Rot ins Spiel!
+  \end{alertblock}
+\end{frame}
 
-
-
+\begin{frame}
+  \frametitle{Ein Example-Block}
+  \begin{exampleblock}{Beispiel}
+    Hier kommt Grün ins Spiel!
+  \end{exampleblock}
+\end{frame}
 
 %%%%##########################################################################
 

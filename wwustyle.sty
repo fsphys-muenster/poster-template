@@ -215,12 +215,12 @@
 \setbeamercolor*{structure}{fg=maincolor}
 
 \setbeamercolor*{block title}{fg=white,bg=maincolor}
-\setbeamercolor*{block title alerted}{fg=white,bg=pantoneblack7!50}
-\setbeamercolor*{block title example}{fg=white,bg=pantoneblack7!50}
+\setbeamercolor*{block title alerted}{fg=white,bg=fu-red}
+\setbeamercolor*{block title example}{fg=white,bg=fu-green}
 
-\setbeamercolor*{block body}{bg=pantoneblack7!10}
-\setbeamercolor*{block body alerted}{bg=pantoneblack7!10}
-\setbeamercolor*{block body example}{bg=pantoneblack7!10}
+\setbeamercolor*{block body}{bg=maincolor!5}
+\setbeamercolor*{block body alerted}{bg=fu-red!10}
+\setbeamercolor*{block body example}{bg=fu-green!10}
 
 \setbeamercolor{bibliography entry author}{fg=fu-blue}
 % TODO: this doesn't work at all:
@@ -257,7 +257,7 @@
 
 % title page
 \setbeamertemplate{title page}{
-  \fontsize{11pt}{1pt}
+ \fontsize{11pt}{1pt}
   \selectfont
   \setlength{\leftmargin}{0mm}% 
   %% set the title and the author
@@ -278,18 +278,15 @@
       }
     }
     \linespread{0.9}
-     \put(42.5,-50.7){\parbox[c]{4cm}{\color{black}\insertauthor}}
-     \put(90,-50.7){\parbox[c]{4cm}{\color{black}\insertdate}}
-
-%     \put(25,-53.7){\parbox[c]{3cm}{\color{black}\insertauthor}}
-%    \put(60,-53.7){\parbox[c]{3cm}{\color{black}\small \insertinstitute}}
-%     \put(90,-53.7){\parbox[c]{4cm}{\color{black}\insertdate}}
-
+    \begin{tikzpicture}[overlay,remember picture]
+     \node [yshift=0.8cm, text width=0.33\linewidth,text centered] at (current page.south) 
+     {\color{pantoneblack7}\insertauthor};
+      \node [yshift=0.8cm,xshift=-1.8cm] at (current page.south east)
+      {\color{pantoneblack7}\insertdate};
+   \end{tikzpicture}
   \end{picture}
 
-  \newlength{\mypagewidth}
-  \setlength{\mypagewidth}{14cm}
-  \begin{tikzpicture}[remember picture,overlay]
+ \begin{tikzpicture}[remember picture,overlay]
     %% the 1. rectangle
     \node [xshift=-0.1cm,yshift=-1.95cm] at (current page.north east)
     [rectangle, 
