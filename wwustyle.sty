@@ -4,7 +4,9 @@
 % A beamer style file following the corporate design of the WWU
 % Muenster.
 %
-%
+% 
+% Version: 0.5 (11.12.2010) Added options nopagenumbering and
+%                           halfpagenumbering
 % Version: 0.4 (23.08.2010) Bugfix: Date is now properly aligned.
 % Version: 0.3 (06.07.2010) The colors are now set via package
 %                           options, see Usage-section for details.
@@ -53,6 +55,11 @@
 % set pantone390 as the default main color 
 \definecolor{maincolor}{RGB}{177,200,0}
 
+% by default give current page number and total number of pages
+\definecolor{currentframenumbercolor}{RGB}{62,62,59}
+\definecolor{slashcolor}{RGB}{62,62,59}
+\definecolor{totalframenumbercolor}{RGB}{62,62,59}
+
 %% ========= Possible options ==============
 % create a presentation in 16 to 10 format
 \DeclareOption{wide}{%
@@ -77,6 +84,18 @@
 \definecolor{maincolor}{RGB}{223,219,0}}
 \DeclareOption{pantoneprozessyellow}{
 \definecolor{maincolor}{RGB}{255,237,0}}
+
+% decide, whether the page number should show up
+\DeclareOption{nopagenumbering}{
+\definecolor{currentframenumbercolor}{RGB}{255,255,255}
+\definecolor{slashcolor}{RGB}{255,255,255}
+\definecolor{totalframenumbercolor}{RGB}{255,255,255}
+}
+\DeclareOption{halfpagenumbering}{
+\definecolor{currentframenumbercolor}{RGB}{62,62,59}
+\definecolor{slashcolor}{RGB}{255,255,255}
+\definecolor{totalframenumbercolor}{RGB}{255,255,255}
+}
 \ProcessOptions\relax
 
 
@@ -242,7 +261,6 @@
 \setbeamertemplate{headline}{
   \fontsize{6pt}{1pt}
   \selectfont
-
   \begin{tikzpicture}[remember picture, overlay]
     \node[xshift=2.75cm,yshift=-0.75cm] at (current page.north west) {\wwulogo{0.9}};
   \end{tikzpicture}
@@ -251,9 +269,11 @@
   \hskip2mm %title on the right
   \parbox[b]{10mm}{
     {\color{maincolor}\rule{0.8pt}{12mm} }
-    \insertframenumber /\inserttotalframenumber
+    \textcolor{currentframenumbercolor}{\insertframenumber}
+    \textcolor{slashcolor}{/}\textcolor{totalframenumbercolor}{\inserttotalframenumber}
   }
 }% end headline
+
 
 % title page
 \setbeamertemplate{title page}{
@@ -262,6 +282,7 @@
   \setlength{\leftmargin}{0mm}% 
   %% set the title and the author
   \setlength{\unitlength}{1mm}
+  
 
   \begin{picture}(0,0)
     \put(-2.5,8){\parbox[c]{10.75cm}{
@@ -278,15 +299,15 @@
       }
     }
     \linespread{0.9}
+    
     \begin{tikzpicture}[overlay,remember picture]
-     \node [yshift=0.8cm, text width=0.33\linewidth,text centered] at (current page.south) 
+      \node [yshift=0.8cm, text width=0.33\linewidth,text centered] at (current page.south) 
      {\color{pantoneblack7}\insertauthor};
       \node [yshift=0.8cm,xshift=-1.8cm] at (current page.south east)
       {\color{pantoneblack7}\insertdate};
    \end{tikzpicture}
   \end{picture}
-
- \begin{tikzpicture}[remember picture,overlay]
+  \begin{tikzpicture}[remember picture,overlay]
     %% the 1. rectangle
     \node [xshift=-0.1cm,yshift=-1.95cm] at (current page.north east)
     [rectangle, 
@@ -332,7 +353,6 @@
     {\wwulogo{0.6}};
 
   \end{tikzpicture}
-
 } %end title page
 
 
