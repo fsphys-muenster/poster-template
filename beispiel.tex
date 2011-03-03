@@ -3,31 +3,22 @@
 %% Author: s_kaul01@PRIS
 %% Version: $Id: beispiel.tex,v 0.0 2010/02/10 14:23:59 s_kaul01 Exp$
 
-
 \documentclass{beamer}
-\usepackage[T1]{fontenc}
 
+\usepackage[pantone396]{wwustyle}
 
- \usepackage[pantone3282]{wwustyle}
-
-%\usepackage[ngerman]{babel}
-\usepackage[english]{babel}
-
+\usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
 
 
 %%\revision$Header: /u/s_kaul01/tmp/beispiel.tex,v 0.0 2010/02/10 14:23:59 s_kaul01 Exp$
 
-% falls die Schriftart MetaNormal nicht vorhanden ist:
-%\renewcommand{\claim}[2]{}
-
-
 \author{Max Mustermann}
 \title{Zur Benutzung der WWU-Beamer Vorlage!}
-\begin{document}
+\subtitle{Allgemeine Hinweise und Benutzung der WWU-Vorlage}
 
-
-%%%%##########################################################################
+\begin{document}
 
 \begin{frame}[plain]
   \maketitle
@@ -38,7 +29,6 @@
   \begin{block}{Hervorhebungen}
     \textbf{Wenn man Dinge hervorheben m\"ochte nutzt man entweder Fettdruck,}
     \textit{ kursive Schrift} \alert{ oder das Schl\"usselwort ``alert''}.
-
   Auch ``itemize''-Umgebungen werden von der Stilvorlage überschrieben:
   \end{block}
   \pause
@@ -62,7 +52,5 @@
     Hier kommt Grün ins Spiel!
   \end{exampleblock}
 \end{frame}
-
-%%%%##########################################################################
 
 \end{document}

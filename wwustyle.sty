@@ -4,7 +4,9 @@
 % A beamer style file following the corporate design of the WWU
 % Muenster.
 %
-% 
+% Version: 1.0 (03.03.2011) Small adjustments for publication. Colors
+%                           are now globally defined and may be used in
+%                           user code.
 % Version: 0.5 (11.12.2010) Added options nopagenumbering and
 %                           halfpagenumbering
 % Version: 0.4 (23.08.2010) Bugfix: Date is now properly aligned.
@@ -32,10 +34,10 @@
 %           Furthermore, if you choose the option "wide", you will get
 %           presentations in 16:10. 
 % Remark:   This uses the MetaNormal font, which is to be found as
-%           a latex font on the homepage of the WWU.
-% Author:   Sven Kaulmann (Comments, etc are welcome to 
-%           sven.kaulmann@uni-muenster.de)
-
+%           a latex font on the homepage of the WWU and should be available 
+%           for employees in the tex distribution on the WWU workstations.
+% Author:   Sven Kaulmann 
+% Maintainer: Martin Drohmann (mdrohmann at uni-muenster dot de)
 
 %% ========= Required Packages =============
 % for the graphics
@@ -60,6 +62,15 @@
 \definecolor{slashcolor}{RGB}{255,255,255}
 \definecolor{totalframenumbercolor}{RGB}{255,255,255}
 
+\definecolor{pantoneblack7}{RGB}{62,62,59}
+\definecolor{pantone312}{RGB}{0,157,209}
+\definecolor{pantone315}{RGB}{0,110,137}
+\definecolor{pantone3282}{RGB}{0,142,150}
+\definecolor{pantone369}{RGB}{122,181,22}
+\definecolor{pantone390}{RGB}{177,200,0}
+\definecolor{pantone396}{RGB}{223,219,0}
+\definecolor{pantoneprozessyellow}{RGB}{255,237,0}
+
 %% ========= Possible options ==============
 % create a presentation in 16 to 10 format
 \DeclareOption{wide}{%
@@ -69,21 +80,21 @@
 % for the color definitions see
 % WWU corporate design manual
 \DeclareOption{pantoneblack7}{
-\definecolor{maincolor}{RGB}{62,62,59}}
+\definecolor{maincolor}{named}{pantoneblack7}}
 \DeclareOption{pantone312}{
-\definecolor{maincolor}{RGB}{0,157,209}}
+\definecolor{maincolor}{named}{pantone312}}
 \DeclareOption{pantone315}{
-\definecolor{maincolor}{RGB}{0,110,137}}
+\definecolor{maincolor}{named}{pantone315}}
 \DeclareOption{pantone3282}{
-\definecolor{maincolor}{RGB}{0,142,150}}
+\definecolor{maincolor}{named}{pantone3282}}
 \DeclareOption{pantone369}{
-\definecolor{maincolor}{RGB}{122,181,22}}
+\definecolor{maincolor}{named}{pantone369}}
 \DeclareOption{pantone390}{
-\definecolor{maincolor}{RGB}{177,200,0}}
+\definecolor{maincolor}{named}{pantone390}}
 \DeclareOption{pantone396}{
-\definecolor{maincolor}{RGB}{223,219,0}}
+\definecolor{maincolor}{named}{pantone396}}
 \DeclareOption{pantoneprozessyellow}{
-\definecolor{maincolor}{RGB}{255,237,0}}
+\definecolor{maincolor}{named}{pantoneprozessyellow}}
 
 % decide, whether the page number should show up
 \DeclareOption{nopagenumbering}{
@@ -394,3 +405,7 @@
   \vskip4pt
 }% end footline
 
+%%% Local Variables:
+%%% TeX-master: "beispiel.tex"
+%%% ispell-local-dictionary: "en"
+%%% End:
