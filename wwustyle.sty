@@ -55,10 +55,10 @@
 % set pantone390 as the default main color 
 \definecolor{maincolor}{RGB}{177,200,0}
 
-% by default give current page number and total number of pages
+% by default give only current page number
 \definecolor{currentframenumbercolor}{RGB}{62,62,59}
-\definecolor{slashcolor}{RGB}{62,62,59}
-\definecolor{totalframenumbercolor}{RGB}{62,62,59}
+\definecolor{slashcolor}{RGB}{255,255,255}
+\definecolor{totalframenumbercolor}{RGB}{255,255,255}
 
 %% ========= Possible options ==============
 % create a presentation in 16 to 10 format
@@ -91,10 +91,10 @@
 \definecolor{slashcolor}{RGB}{255,255,255}
 \definecolor{totalframenumbercolor}{RGB}{255,255,255}
 }
-\DeclareOption{halfpagenumbering}{
+\DeclareOption{fullpagenumbering}{
 \definecolor{currentframenumbercolor}{RGB}{62,62,59}
-\definecolor{slashcolor}{RGB}{255,255,255}
-\definecolor{totalframenumbercolor}{RGB}{255,255,255}
+\definecolor{slashcolor}{RGB}{62,62,59}
+\definecolor{totalframenumbercolor}{RGB}{62,62,59}
 }
 \ProcessOptions\relax
 
@@ -128,7 +128,7 @@
   %% Münster
   \node[
     xshift=1.0ex,
-    right of=WWU] {\textcolor{pantoneblack7!50}{M\"unster}};
+    right of=WWU] (muenster) {\textcolor{pantoneblack7!50}{M\"unster}};
 \end{tikzpicture}
 } % end of newcommand
 
@@ -211,9 +211,20 @@
 \setbeamertemplate{navigation symbols}{}
 % set the right side width so the logo fits there
 \setbeamersize{sidebar width right=1.1cm}
-\setbeamertemplate{sidebar right}{\hfill\vfill\begin{colormixin}{25!white}
-    \claim{3.39}{90}
-  \end{colormixin}}
+\setbeamertemplate{sidebar right}{
+  % \hfill
+  % \vfill
+  % \begin{colormixin}{25!white}
+  %   \claim{3.39}{90}
+  % \end{colormixin}
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=east,inner sep=0,yshift=-2.25cm,xshift=0.3mm] (sidebarclaim) at (current page.east) {
+      \begin{colormixin}{25!white}
+        \claim{3.39}{90}
+     \end{colormixin}
+    };
+  \end{tikzpicture}
+}
 %% ============ Color definitions ================
 
 % colors to be used
@@ -254,7 +265,8 @@
     \hskip-2.4mm 
     \color{maincolor}
     \begin{minipage}[b][20pt]{\textwidth}
-      \textgreater\,\insertframetitle
+      %\textgreater\,
+      \insertframetitle
     \end{minipage}
 }
 % headline
@@ -262,14 +274,16 @@
   \fontsize{6pt}{1pt}
   \selectfont
   \begin{tikzpicture}[remember picture, overlay]
-    \node[xshift=2.75cm,yshift=-0.75cm] at (current page.north west) {\wwulogo{0.9}};
+    \node[xshift=0.54cm,yshift=-1.21cm,
+    anchor=south west,
+    inner sep=0] at (current page.north west) {\wwulogo{0.8}};
   \end{tikzpicture}
   \hfill
   \insertshorttitle 
   \hskip2mm %title on the right
   \parbox[b]{10mm}{
     {\color{maincolor}\rule{0.8pt}{12mm} }
-    \textcolor{currentframenumbercolor}{\insertframenumber}
+\hskip1mm    \textcolor{currentframenumbercolor}{\insertframenumber}
     \textcolor{slashcolor}{/}\textcolor{totalframenumbercolor}{\inserttotalframenumber}
   }
 }% end headline
@@ -282,11 +296,9 @@
   \setlength{\leftmargin}{0mm}% 
   %% set the title and the author
   \setlength{\unitlength}{1mm}
-  
-
   \begin{picture}(0,0)
     \put(-2.5,8){\parbox[c]{10.75cm}{
-        \fontsize{16pt}{14pt}
+        \fontsize{15pt}{14pt}
         \selectfont
         \color{maincolor}
         \inserttitle
@@ -301,10 +313,17 @@
     \linespread{0.9}
     
     \begin{tikzpicture}[overlay,remember picture]
-      \node [yshift=0.8cm, text width=0.33\linewidth,text centered] at (current page.south) 
-     {\color{pantoneblack7}\insertauthor};
-      \node [yshift=0.8cm,xshift=-1.8cm] at (current page.south east)
-      {\color{pantoneblack7}\insertdate};
+      \node (authornode) [yshift=0.5cm, inner sep=0,text width=0.33\linewidth, text centered, anchor=base] at (current page.south) 
+     {\color{pantoneblack7}
+       \fontsize{8pt}{14pt}
+       \selectfont
+       \insertauthor};
+      \node (datenode) [yshift=0.5cm,xshift=-1.8cm, inner sep=0, anchor=base] at (current page.south east)
+      {\color{pantoneblack7}
+       \fontsize{8pt}{14pt}
+       \selectfont
+       \insertdate};
+
    \end{tikzpicture}
   \end{picture}
   \begin{tikzpicture}[remember picture,overlay]
@@ -346,7 +365,7 @@
     \fill[maincolor] (current page.west)++(0,-2.63cm)
     rectangle (helpernode6);
     %% the claim
-    \node [xshift=1.72cm,yshift=-8.79cm] at (current page.north west)
+    \node [xshift=1.72cm,yshift=0.8cm] at (current page.south west)
     (claim) {\claim{1}{0}};
     %% the logo
     \node [xshift=3.225cm,yshift=-1cm] at (current page.north west)
@@ -361,13 +380,12 @@
 \setbeamertemplate{footline}{
   \fontsize{6pt}{1pt}
   \selectfont
-
-  \vskip5pt
+  \vskip4pt
   \color{maincolor}
   \rule{\textwidth}{1.2pt}\\ % horizontal line
   \vskip2pt
   \rule{\textwidth}{0.8pt}\\ % horizontal line
-  \vskip4pt
+  \vskip5pt
   \rule{\textwidth}{1.2pt} % horizontal line
   \vskip2pt
   \color{black}
