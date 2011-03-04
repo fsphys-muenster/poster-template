@@ -1,0 +1,49 @@
+This is a latex - style file following the corporate design of the WWU
+Muenster. It redefines all quantities needed in a beamer-presentation.
+Furthermore the maketitle command is redefined to build the titlepage
+introduced in the corporate design manual in documentclasses like
+article or book.
+
+Usage:      Just put \usepackage{wwustyle} in the header of your tex
+            file, thats all!
+            You may reset the main color by using COLORCODE
+            as an option to the package, where COLORCODE is the
+            name of the color (in one word, all in small letters) 
+            as defined in the corporate design manual which is 
+            to be found on the web:
+            http://www.wwu.de/corporate-design/
+            Furthermore, if your documentclass is 'beamer' and you
+            choose the option "wide", you will get presentations in 16:10. 
+Remark:     This uses the MetaNormal font, which is to be found as
+            a latex font on the homepage of the WWU and should be available 
+            for employees in the tex distribution on the WWU workstations.
+
+Author:     Sven Kaulmann 
+Maintainer: Martin Drohmann (mdrohmann at uni-muenster dot de)
+
+
+Changelog:
+
+Version: 1.1 (04.03.2011) Added new version of maketitle command for 
+                          article, scrbook, etc classes in WWU style
+Version: 1.0 (03.03.2011) Small adjustments for publication. Colors
+                          are now globally defined and may be used in
+                          user code.
+Version: 0.5 (11.12.2010) Added options nopagenumbering and
+                          halfpagenumbering
+Version: 0.4 (23.08.2010) Bugfix: Date is now properly aligned.
+Version: 0.3 (06.07.2010) The colors are now set via package
+                          options, see Usage-section for details.
+                          Furthermore, using the option "wide" one
+                          can create presentations in 16:10 format.
+Version: 0.2 (11.06.2010) One may now use a non-standard font size
+                          in his document, the style does not get
+                          corrupted anymore.
+                          Added fontenc as requirement, some things 
+                          look better with it.
+                          Removed institute from title page, looked too
+                          crowded.
+Version: 0.1 (13.02.2010) Initial version
+
+
+
