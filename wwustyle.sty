@@ -49,12 +49,6 @@
 \renewcommand{\sfdefault}{fMt}
 \RequirePackage[tracking=smallcaps]{microtype}
 
-%% the package soul is needed for letter spacing control
-% \RequirePackage{soul}
-% % define the caps font used in the logo
-% %\capsdef{////}{\scshape}{.039em}{.4em}{.2em}
-% \capsdef{////}{\scshape}{.016em}{.4em}{.2em}
-
 \definecolor{pantoneblack7}{RGB}{62,62,59}
 \definecolor{pantone312}{RGB}{0,157,209}
 \definecolor{pantone315}{RGB}{0,110,137}
@@ -130,7 +124,7 @@
     node distance=1.866666666mm,
     transform shape,
     scale=#1]
-    \tikzstyle{every node}=[inner sep=0mm, fill=pantone312]
+    \tikzstyle{every node}=[inner sep=0mm, fill=pantoneblack7]
     \tikzstyle{mytextnode}=[inner sep=0mm, below left of=bar,fill=none]
     % the first bar
   \node[rectangle,
@@ -180,8 +174,7 @@
   \node[mytextnode,
   yshift=-7.0mm,
   xshift=39.8mm] {
-%    \UseMicrotypeSet{smallcaps}
-    \color{pantoneblack7}\fontsize{4mm}{1mm}\selectfont \textls[15]{\sc\textbf{Westf\"alische}}}; % 'relax' is needed here to surpress an error
+    \color{pantoneblack7}\fontsize{4mm}{1mm}\selectfont \textls[15]{\sc\textbf{Westf\"alische}}};
   % Wilhelms-Universität
   \node[mytextnode,
   yshift=-11.5mm,
@@ -389,7 +382,7 @@
     \node [xshift=1.72cm,yshift=0.8cm] at (current page.south west)
     (claim) {\claim{1}{0}};
     %% the logo
-    \node [xshift=3.225cm,yshift=-1cm] at (current page.north west)
+    \node [xshift=0.39cm,yshift=-1cm,anchor=west] at (current page.north west)
     {\wwulogo{0.6}};
   \end{tikzpicture}
 } %end title page
@@ -407,7 +400,7 @@
   \rule{\textwidth}{1.2pt} % horizontal line
   \vskip2pt
   \color{black}
-  \hspace{4.5mm}
+  \hspace{5mm}
   \insertshortauthor
   \vskip4pt
 }% end footline
