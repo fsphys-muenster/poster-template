@@ -44,23 +44,16 @@
 \RequirePackage{tikz}
 \RequirePackage{xxcolor}
 
-%% use MetaRoman Normal as the standart non-serif font
-\RequirePackage{meta}
 \RequirePackage[T1]{fontenc}
+%% use MetaRoman Normal as the standart non-serif font
 \renewcommand{\sfdefault}{fMt}
+\RequirePackage[tracking=smallcaps]{microtype}
 
 %% the package soul is needed for letter spacing control
-\RequirePackage{soul}
-% define the caps font used in the logo
-\capsdef{////}{\scshape}{.039em}{.4em}{.2em}
-
-% set pantone390 as the default main color 
-\definecolor{maincolor}{RGB}{177,200,0}
-
-% by default give only current page number
-\definecolor{currentframenumbercolor}{RGB}{62,62,59}
-\definecolor{slashcolor}{RGB}{255,255,255}
-\definecolor{totalframenumbercolor}{RGB}{255,255,255}
+% \RequirePackage{soul}
+% % define the caps font used in the logo
+% %\capsdef{////}{\scshape}{.039em}{.4em}{.2em}
+% \capsdef{////}{\scshape}{.016em}{.4em}{.2em}
 
 \definecolor{pantoneblack7}{RGB}{62,62,59}
 \definecolor{pantone312}{RGB}{0,157,209}
@@ -71,11 +64,9 @@
 \definecolor{pantone396}{RGB}{223,219,0}
 \definecolor{pantoneprozessyellow}{RGB}{255,237,0}
 
-%% ========= Possible options ==============
-% create a presentation in 16 to 10 format
-\DeclareOption{wide}{%
-  \geometry{paperwidth=15.36cm,paperheight=9.6cm}
-}
+% set pantone390 as the default main color 
+\definecolor{maincolor}{named}{pantone390}
+
 % set the main color
 % for the color definitions see
 % WWU corporate design manual
@@ -95,19 +86,8 @@
 \definecolor{maincolor}{named}{pantone396}}
 \DeclareOption{pantoneprozessyellow}{
 \definecolor{maincolor}{named}{pantoneprozessyellow}}
-
-% decide, whether the page number should show up
-\DeclareOption{nopagenumbering}{
-\definecolor{currentframenumbercolor}{RGB}{255,255,255}
-\definecolor{slashcolor}{RGB}{255,255,255}
-\definecolor{totalframenumbercolor}{RGB}{255,255,255}
-}
-\DeclareOption{fullpagenumbering}{
-\definecolor{currentframenumbercolor}{RGB}{62,62,59}
-\definecolor{slashcolor}{RGB}{62,62,59}
-\definecolor{totalframenumbercolor}{RGB}{62,62,59}
-}
 \ProcessOptions\relax
+
 
 
 %% ========= Images and Graphics ============
@@ -116,30 +96,30 @@
 %% \parameter 1 the scale
 %% \parameter 2 the rotation
 \newcommand{\claim}[2]{
-\begin{tikzpicture}[scale=#1, node distance=5.25ex, rotate=#2, transform shape]
+\begin{tikzpicture}[scale=#1, node distance=9.9mm, rotate=#2, transform shape]
   %% wissen
-  \node (wissen)  {\textcolor{pantoneblack7}{wissen}};
+  \node (wissen)  {\textcolor{pantoneblack7}{\fontsize{3.8mm}{1mm}\selectfont wissen}};
   %% Punkt
   \node [circle,
-    minimum width=0.39ex,
+    minimum width=0.9mm,
     inner sep=0,
     fill=maincolor, 
-    yshift=-0.571ex, 
-    xshift=-1.94ex, 
+    yshift=-1mm, 
+    xshift=-3.75mm, 
     right of=wissen] (Punkt) {};
   %% leben
   \node[
-    xshift=0.75ex,
-    right of=wissen] (leben) {\textcolor{pantoneblack7}{leben}};
+    xshift=1.4mm,
+    right of=wissen] (leben) {\textcolor{pantoneblack7}{\fontsize{3.8mm}{1mm}\selectfont leben}};
   %% WWU
   \node[
-    xshift=-0.25ex,
-    yshift=3.4ex,
-    below of=wissen] (WWU) {\textcolor{pantoneblack7!50}{WWU}};
+    xshift=-0.47mm,
+    yshift=6.4mm,
+    below of=wissen] (WWU) {\textcolor{pantoneblack7!50}{\fontsize{3.8mm}{1mm}\selectfont WWU}};
   %% Münster
   \node[
-    xshift=1.0ex,
-    right of=WWU] (muenster) {\textcolor{pantoneblack7!50}{M\"unster}};
+    xshift=1.8666mm,
+    right of=WWU] {\textcolor{pantoneblack7!50}{\fontsize{3.8mm}{1mm}\selectfont M\"unster}};
 \end{tikzpicture}
 } % end of newcommand
 
@@ -147,74 +127,79 @@
 %% \parameter 1 the scale
 \newcommand{\wwulogo}[1]{
   \begin{tikzpicture}[
-    node distance=1.0ex,
+    node distance=1.866666666mm,
     transform shape,
     scale=#1]
-    \tikzstyle{every node}=[inner sep=0mm]
+    \tikzstyle{every node}=[inner sep=0mm, fill=pantone312]
+    \tikzstyle{mytextnode}=[inner sep=0mm, below left of=bar,fill=none]
     % the first bar
   \node[rectangle,
-             minimum height=0.75ex,
-             minimum width=0.35ex,
-             fill=pantoneblack7] (bar)  {};
+             minimum height=1.45mm,
+             minimum width=0.62mm] (bar)  {};
   % the second bar
   \node[below of = bar,
             rectangle,
-            minimum height=0.35ex,
-            minimum width=1.39ex,
-            yshift=0.13ex,
-            fill=pantoneblack7] {};
+            minimum height=0.63mm,
+            minimum width=2.6mm,
+            yshift=0.26mm] {};
   % the third bar
   \node[below of = bar,
              rectangle,
-             minimum height=0.75ex,
-             minimum width=2.4ex,
-             yshift=-1.575ex,
-             fill=pantoneblack7] {};
+             minimum height=1.4mm,
+             minimum width=4.5mm,
+             yshift=-3mm] {};
   % the fourth bar
   \node[below left of=bar,
             rectangle,
-            minimum height=0.73ex,
-            minimum width=9.38ex,
-            yshift=-3.335ex,
-            xshift=-6.34ex,
-            fill=pantoneblack7] {};
+            minimum height=1.38mm,
+            minimum width=17.8mm,
+            yshift=-6.35mm,
+            xshift=-12.1mm] (fourth) {};
   % the fifth bar
   \node[below left of=bar,
              rectangle,
-             minimum height=0.73ex,
-             minimum width=9.38ex,
-             yshift=-3.335ex,
-             xshift=7.78ex,
-             fill=pantoneblack7] {};
+             minimum height=1.38mm,
+             minimum width=17.8mm,
+             yshift=-6.35mm,
+             xshift=14.85mm] (fifth) {};
   % the sixth bar
   \node[below of=bar,
              rectangle,
-             minimum height=0.35ex,
-             minimum width=23.5ex,
-             yshift=-4.92ex,
-             fill=pantoneblack7] {};
+             minimum height=0.65mm,
+             minimum width=44.75mm,
+             yshift=-9.4mm,
+             xshift=0.05mm] {};
   % the  seventh bar
   \node[below of=bar,
              rectangle,
-             minimum height=0.73ex,
-             minimum width=23.5ex,
-             yshift=-8.225ex,
-             fill=pantoneblack7] {};
+             minimum height=1.4mm,
+             minimum width=44.75mm,
+             yshift=-15.7mm,
+             xshift=0.05mm] {};
   % Westfälische
-  \node[below left of=bar,
-             yshift=-3.61ex,
-             xshift=20.85ex] {\caps{\textbf{Westf\"alische}}\relax}; % 'relax' is needed here to surpress an error
+  \node[mytextnode,
+  yshift=-7.0mm,
+  xshift=39.8mm] {
+%    \UseMicrotypeSet{smallcaps}
+    \color{pantoneblack7}\fontsize{4mm}{1mm}\selectfont \textls[15]{\sc\textbf{Westf\"alische}}}; % 'relax' is needed here to surpress an error
   % Wilhelms-Universität
-  \node[below left of=bar,
-             yshift=-5.91ex,
-             xshift=25.1ex] {\caps{\textbf{Wilhelms-Universit\"at}}\relax};
+  \node[mytextnode,
+  yshift=-11.5mm,
+  xshift=47.7mm] {
+    \color{pantoneblack7}\fontsize{4mm}{1mm}\selectfont\textls[15]{\sc\textbf{Wilhelms-Universit\"at}\relax}};
   % Münster
-  \node[below left of=bar,
-             yshift=-8.19ex,
-             xshift=18.65ex] {\caps{\textbf{M\"unster}}\relax};
+  \node[mytextnode,
+  yshift=-15.8mm,
+  xshift=35.6mm] {\color{pantoneblack7}\fontsize{4mm}{1mm}\selectfont\textls[15]{\sc\textbf{M\"unster}\relax}};
 
   \end{tikzpicture}
 } % end of the logo
+
+
+\@ifclassloaded{beamer}{
+
+% use MetaNormal Roman everywhere
+\RequirePackage{meta}
 
 %% ============ Margins, spacing, etc ============
 \setbeamersize{text margin right=2mm, text margin left=7.50mm}  % text margin
@@ -222,21 +207,36 @@
 \setbeamertemplate{navigation symbols}{}
 % set the right side width so the logo fits there
 \setbeamersize{sidebar width right=1.1cm}
-\setbeamertemplate{sidebar right}{
-  % \hfill
-  % \vfill
-  % \begin{colormixin}{25!white}
-  %   \claim{3.39}{90}
-  % \end{colormixin}
-  \begin{tikzpicture}[remember picture, overlay]
-    \node[anchor=east,inner sep=0,yshift=-2.25cm,xshift=0.3mm] (sidebarclaim) at (current page.east) {
-      \begin{colormixin}{25!white}
-        \claim{3.39}{90}
-     \end{colormixin}
-    };
-  \end{tikzpicture}
-}
-%% ============ Color definitions ================
+
+
+% by default give only current page number
+\definecolor{currentframenumbercolor}{RGB}{62,62,59}
+\definecolor{slashcolor}{RGB}{255,255,255}
+\definecolor{totalframenumbercolor}{RGB}{255,255,255}
+
+
+% %% ========= Possible options for beamer ==============
+% % create a presentation in 16 to 10 format
+% \DeclareOption{wide}{%
+%   \geometry{paperwidth=15.36cm,paperheight=9.6cm}
+% }
+
+% % decide, whether the page number should show up
+% \DeclareOption{nopagenumbering}{
+% \definecolor{currentframenumbercolor}{RGB}{255,255,255}
+% \definecolor{slashcolor}{RGB}{255,255,255}
+% \definecolor{totalframenumbercolor}{RGB}{255,255,255}
+% }
+% \DeclareOption{fullpagenumbering}{
+% \definecolor{currentframenumbercolor}{RGB}{62,62,59}
+% \definecolor{slashcolor}{RGB}{62,62,59}
+% \definecolor{totalframenumbercolor}{RGB}{62,62,59}
+% }
+% \ProcessOptions\relax
+
+
+
+%% ============ Color definitions for beamer ================
 
 % colors to be used
 \definecolor{text-grey}{rgb}{0.45, 0.45, 0.45} % grey text on white background
@@ -268,11 +268,22 @@
 \setbeamercolor{bibliography entry journal}{fg=text-grey}
 \setbeamercolor{item}{fg=maincolor}
 
+
+% sidebar
+\setbeamertemplate{sidebar right}{
+  \begin{tikzpicture}[remember picture, overlay]
+    \node[anchor=east,inner sep=0,yshift=-2.25cm,xshift=0.3mm] (sidebarclaim) at (current page.east) {
+      \begin{colormixin}{25!white}
+        \claim{1.25}{90}
+     \end{colormixin}
+    };
+  \end{tikzpicture}
+}
+
 % frame title
 \setbeamertemplate{frametitle}{
   \fontsize{14pt}{1pt}
   \selectfont
-
     \hskip-2.4mm 
     \color{maincolor}
     \begin{minipage}[b][20pt]{\textwidth}
@@ -280,6 +291,7 @@
       \insertframetitle
     \end{minipage}
 }
+
 % headline
 \setbeamertemplate{headline}{
   \fontsize{6pt}{1pt}
@@ -287,7 +299,7 @@
   \begin{tikzpicture}[remember picture, overlay]
     \node[xshift=0.54cm,yshift=-1.21cm,
     anchor=south west,
-    inner sep=0] at (current page.north west) {\wwulogo{0.8}};
+    inner sep=0] at (current page.north west) {\wwulogo{0.44}};
   \end{tikzpicture}
   \hfill
   \insertshorttitle 
@@ -298,8 +310,6 @@
     \textcolor{slashcolor}{/}\textcolor{totalframenumbercolor}{\inserttotalframenumber}
   }
 }% end headline
-
-
 % title page
 \setbeamertemplate{title page}{
  \fontsize{11pt}{1pt}
@@ -381,11 +391,8 @@
     %% the logo
     \node [xshift=3.225cm,yshift=-1cm] at (current page.north west)
     {\wwulogo{0.6}};
-
   \end{tikzpicture}
 } %end title page
-
-
 
 % footline
 \setbeamertemplate{footline}{
@@ -404,6 +411,108 @@
   \insertshortauthor
   \vskip4pt
 }% end footline
+} % true-branch of ifclassloaded
+{
+
+% define the institute logo command
+\newcommand{\@institutelogo}{}
+\newcommand{\institutelogo}[1]{%
+  \renewcommand{\@institutelogo}{#1}
+}
+
+\providecommand{\@subtitle}{}
+\providecommand{\subtitle}[1]{%
+  \renewcommand{\@subtitle}{#1}
+}
+
+\renewcommand{\maketitle}{ %replace standard LaTeX-command
+\begin{titlepage}
+\sf
+ \setlength{\leftmargin}{0mm}% 
+ \setlength{\unitlength}{1mm}
+ \begin{tikzpicture}[remember picture,overlay]
+%  \node [yshift=-0.8mm,xshift=-0.35mm]at (current page.center) {\includegraphics[width=21cm]{seite_einzeln}};
+    %% the logo
+    \node [xshift=6.4cm,yshift=-2.5cm] at (current page.north west)
+    {\wwulogo{1.12}};
+    %% the title
+    \node (greaternode) [xshift=1.4cm,yshift=-7.2cm,anchor=base west] at (current page.north west)
+    [inner sep=0mm] {
+      \fontsize{26pt}{11pt}\selectfont\color{maincolor}\textgreater};
+    \node (titlenode) [xshift=1.85cm,yshift=-7.2cm,anchor=base west] at (current page.north west)
+    [inner sep=0mm,text width=16.45cm] {
+      \color{maincolor}
+      \fontsize{26pt}{28pt}\selectfont\textls[15]{\@title}\par
+    };
+    \node [xshift=1.85cm,yshift=-10.65cm, anchor=south west] at (current page.north west)
+    [inner sep=0mm,text width=16.45cm, minimum width=16.45cm] {
+      \color{pantoneblack7}
+      \fontsize{19.5pt}{21pt}\selectfont
+      \@subtitle\par
+    };
+    %% the 1. rectangle
+    \node [yshift=-5.2cm,anchor=north east] at (current page.north east)
+    [rectangle, 
+    inner sep=0mm,
+    minimum height=1.4cm,
+    minimum width=0.45cm,
+    fill=maincolor
+    ] {};
+    %% the 2. rectangle
+    \node [yshift=-7.2cm,anchor=north east] at (current page.north east)
+    [rectangle, 
+    inner sep=0mm,
+    minimum height=0.7cm,
+    minimum width=1.25cm,
+    fill=maincolor
+    ] {};
+    %% the 3. rectangle
+    \node [yshift=-10.5cm,anchor=north east] (thirdrec) at (current page.north east)
+    [rectangle, 
+    inner sep=0,
+    minimum height=1.4cm,
+    minimum width=2.2cm,
+    fill=maincolor
+    ] {};
+    %% the 4. rectangle
+    \node [yshift=-13.2cm, anchor=north west] (fourthrec) at (current
+    page.north west)
+    [rectangle, 
+    inner sep=0,
+    minimum height=1.4cm,
+    minimum width=16.450cm,
+    fill=maincolor
+    ] {};
+    %% the 5. rectangle
+    \node [yshift=-17.2cm, anchor=north west] (fifthrec) at (current
+    page.north west)
+    [rectangle, 
+    inner sep=0,
+    minimum height=0.7cm,
+    minimum width=21cm,
+    fill=maincolor
+    ] {};
+    %% the 6. rectangle
+    \node [yshift=-23.1cm, anchor=north west] (sixthrec) at (current
+    page.north west)
+    [rectangle, 
+    inner sep=0,
+    minimum height=1.4cm,
+    minimum width=21cm,
+    fill=maincolor
+    ] {};
+    %% the claim
+    \node [xshift=1.4cm,yshift=1.4cm, inner sep=0, anchor=south west] at (current page.south west)
+    (claim) {\claim{1.75}{0}};
+    \node [xshift=-1.4cm,yshift=1.4cm, anchor=south east] at (current page.south east)
+    [inner sep=0mm,align=right] {
+      \@institutelogo
+    };
+  \end{tikzpicture}
+\end{titlepage}
+}
+} % false-branch of ifclassloaded{beamer}
+
 
 %%% Local Variables:
 %%% TeX-master: "beispiel.tex"
