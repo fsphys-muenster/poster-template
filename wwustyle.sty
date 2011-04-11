@@ -82,6 +82,10 @@
 \definecolor{maincolor}{named}{pantone396}}
 \DeclareOption{pantoneprozessyellow}{
 \definecolor{maincolor}{named}{pantoneprozessyellow}}
+% % create a presentation in 16 to 10 format
+\DeclareOption{wide}{%
+  \geometry{paperwidth=15.36cm,paperheight=9.6cm}
+}
 \ProcessOptions\relax
 
 
@@ -236,11 +240,6 @@
 
 
 % %% ========= Possible options for beamer ==============
-% % create a presentation in 16 to 10 format
-\DeclareOption{wide}{%
-  \geometry{paperwidth=15.36cm,paperheight=9.6cm}
-}
-
 % % decide, whether the page number should show up
 % \DeclareOption{nopagenumbering}{
 % \definecolor{currentframenumbercolor}{RGB}{255,255,255}
