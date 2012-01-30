@@ -12,6 +12,9 @@ Usage:      Just put \usepackage{wwustyle} in the header of your tex
             as defined in the corporate design manual which is 
             to be found on the web:
             http://www.wwu.de/corporate-design/
+            For usage of the english claim "living.knowledge" instead of
+            "wissen.leben" in the design, add the option "english" when loading
+            the wwustyle style.
             Furthermore, if your documentclass is 'beamer' and you
             choose the option "wide", you will get presentations in 16:10. 
 Remark:     This uses the MetaNormal font, which is to be found as
@@ -24,6 +27,7 @@ Maintainer: Martin Drohmann (mdrohmann at uni-muenster dot de)
 
 Changelog:
 
+Version: 1.2 (30.01.2012) Added option "english" for english WWU claim.
 Version: 1.1 (04.03.2011) Added new version of maketitle command for 
                           article, scrbook, etc classes in WWU style
 Version: 1.0 (03.03.2011) Small adjustments for publication. Colors

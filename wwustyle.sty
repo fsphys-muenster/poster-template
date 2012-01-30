@@ -82,6 +82,21 @@
 \definecolor{maincolor}{named}{pantone396}}
 \DeclareOption{pantoneprozessyellow}{
 \definecolor{maincolor}{named}{pantoneprozessyellow}}
+
+\newcommand{\claimTextWissen}{wissen}
+\newcommand{\claimTextLeben}{leben}
+\newcommand{\claimPunktXShift}{-3.75mm}
+\newcommand{\claimLebenXShift}{1.4mm}
+\newcommand{\claimWWUXShift}{-0.47mm}
+\newcommand{\claimWWUXXShift}{1.8666mm}
+\DeclareOption{english}{
+\renewcommand{\claimTextWissen}{living}
+\renewcommand{\claimTextLeben}{knowledge}
+\renewcommand{\claimPunktXShift}{-4.7mm}
+\renewcommand{\claimLebenXShift}{4.77mm}
+\renewcommand{\claimWWUXShift}{0mm}
+\renewcommand{\claimWWUXXShift}{2.3366mm}
+}
 % % create a presentation in 16 to 10 format
 \DeclareOption{wide}{%
   \geometry{paperwidth=15.36cm,paperheight=9.6cm}
@@ -102,7 +117,7 @@
     \color{pantoneblack7}
     \fontsize{3.8mm}{1mm}\selectfont 
     \usefont{T1}{fMt}{}{}
-    wissen
+    \claimTextWissen
   };
   %% Punkt
   \node [circle,
@@ -110,27 +125,27 @@
     inner sep=0,
     fill=maincolor, 
     yshift=-1mm, 
-    xshift=-3.75mm, 
+    xshift=\claimPunktXShift, 
     right of=wissen] (Punkt) {};
   %% leben
   \node[
-    xshift=1.4mm,
+    xshift=\claimLebenXShift,
     right of=wissen] (leben) {
       \color{pantoneblack7}
       \fontsize{3.8mm}{1mm}\selectfont
       \usefont{T1}{fMt}{}{}
-      leben
+      \claimTextLeben
     };
   %% WWU
   \node[
-    xshift=-0.47mm,
+    xshift=\claimWWUXShift,
     yshift=6.4mm,
     below of=wissen] (WWU) {\textcolor{pantoneblack7!50}{\fontsize{3.8mm}{1mm}\selectfont
         \usefont{T1}{fMt}{}{}
         WWU}};
   %% Münster
   \node[
-    xshift=1.8666mm,
+    xshift=\claimWWUXXShift,
     right of=WWU] {\textcolor{pantoneblack7!50}{\fontsize{3.8mm}{1mm}\selectfont 
         \usefont{T1}{fMt}{}{}
         M\"unster}};
