@@ -1,8 +1,3 @@
-%%% beispiel.tex --- 
-
-%% Author: s_kaul01@PRIS
-%% Version: $Id: beispiel.tex,v 0.0 2010/02/10 14:23:59 s_kaul01 Exp$
-
 \documentclass{beamer}
 
 \usepackage[pantone312,english]{wwustyle}
@@ -11,14 +6,32 @@
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
-
-%%\revision$Header: /u/s_kaul01/tmp/beispiel.tex,v 0.0 2010/02/10 14:23:59 s_kaul01 Exp$
+% Uncomment the following two lines if you want to prepare your document for
+% the fast mode.
+% \usetikzlibrary{external}
+% \tikzexternalize
 
 \author{Max Mustermann}
 \title{Zur Benutzung der WWU-Beamer Vorlage!}
 \subtitle{Allgemeine Hinweise und Benutzung der WWU-Vorlage}
 
 \begin{document}
+
+%%%%%%%%%%%%%%% WWUstyle "fast" mode %%%%%%%%%%%%%%%%%%%%%
+% Do the following steps in order to speed up the compilation time of your
+% presentation:
+%
+% 1. Include the externalization tikz library in the preamble of your document.
+%    This is always recommended if you are using tikz in your document.
+% 2. Uncomment the \wwupreparefastmode command below
+% 3. Compile your document with command line option '-shell-escape',
+%    e.g.: 'pdflatex -shell-escape beamer.tex'
+% 4. Comment (or delete) the \wwupreparefastmode
+% 5. Add option 'fast' to the 'wwustyle' package declaration line.
+% 6. Be happy!
+
+% \wwupreparefastmode
+
 
 \begin{frame}[plain]
   \maketitle

@@ -1,4 +1,5 @@
 *.aux
+*.auxlock
 *.log
 *.dvi
 *.ps
@@ -9,3 +10,5 @@
 *.nav
 *.swp
 /beamer.synctex.gz
+wwu-claim*
+wwu-logo-*

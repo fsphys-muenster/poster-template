@@ -133,6 +133,31 @@
 \renewcommand{\logoTitleSmall}{\logoTitleSmallFn}
 }
 
+\newcommand{\wwupreparefastmode}{%
+\begin{frame}
+\tikzsetnextfilename{wwu-claim-sidebar}
+\claimSidebar
+\tikzsetnextfilename{wwu-claim}
+\claimMain
+\tikzsetnextfilename{wwu-claim-title}
+\claimTitle
+\tikzsetnextfilename{wwu-logo-headline}
+\wwulogo{0.44}
+\tikzsetnextfilename{wwu-logo-title-small}
+\logoTitleSmall
+\tikzsetnextfilename{wwu-logo-title}
+\logoTitle
+\switchToEnglish
+\tikzsetnextfilename{wwu-claim-sidebar-en}
+\claimSidebar
+\tikzsetnextfilename{wwu-claim-en}
+\claimMain
+\tikzsetnextfilename{wwu-claim-title-en}
+\claimTitle
+\end{frame}%
+} %% end of wwupreparefastmode
+
+
 % % create a presentation in 16 to 10 format
 \DeclareOption{wide}{%
   \geometry{paperwidth=15.36cm,paperheight=9.6cm}
@@ -408,7 +433,8 @@
       }
     }
     \linespread{0.9}
-    
+    {
+    \skipexternalization
     \begin{tikzpicture}[overlay,remember picture]
       \node (authornode) [yshift=0.5cm, inner sep=0,text width=0.33\linewidth, text centered, anchor=base] at (current page.south) 
      {\color{pantoneblack7}
@@ -422,6 +448,7 @@
        \insertdate};
 
    \end{tikzpicture}
+   }
   \end{picture}
   {
   \skipexternalization
@@ -510,9 +537,11 @@
 
 \renewcommand{\maketitle}{ %replace standard LaTeX-command
 \begin{titlepage}
-\sf
+ {
+ \sf
  \setlength{\leftmargin}{0mm}% 
  \setlength{\unitlength}{1mm}
+ \skipexternalization
  \begin{tikzpicture}[remember picture,overlay]
 %  \node [yshift=-0.8mm,xshift=-0.35mm]at (current page.center) {\includegraphics[width=21cm]{seite_einzeln}};
     %% the logo
@@ -592,6 +621,7 @@
       \@institutelogo
     };
   \end{tikzpicture}
+  }
 \end{titlepage}
 }
 } % false-branch of ifclassloaded{beamer}
