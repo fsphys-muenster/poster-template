@@ -4,6 +4,8 @@
 % A beamer style file following the corporate design of the WWU
 % Muenster.
 %
+% Version: 1.3 (01.03.2012) Make compatible with tikzlibrary "external"
+% Version: 1.2 (30.01.2012) Added option "english" for english WWU claim
 % Version: 1.1 (04.03.2011) Added new version of maketitle command for 
 %                           article, scrbook, etc classes in WWU style
 % Version: 1.0 (03.03.2011) Small adjustments for publication. Colors
@@ -49,6 +51,13 @@
 \RequirePackage[T1]{fontenc}
 %% use MetaRoman Normal as the standard non-serif font
 \renewcommand{\sfdefault}{fMt}
+\newcommand{\skipexternalization}{%
+\ifdefined\tikzexternalize%
+\tikzset{external/export=false}%
+\else%
+%
+\fi%
+}
 \RequirePackage{microtype}
 
 \definecolor{pantoneblack7}{RGB}{62,62,59}
@@ -89,14 +98,41 @@
 \newcommand{\claimLebenXShift}{1.4mm}
 \newcommand{\claimWWUXShift}{-0.47mm}
 \newcommand{\claimWWUXXShift}{1.8666mm}
-\DeclareOption{english}{
+\newcommand{\claimDeEn}{}
+\newcommand{\switchToEnglish}
+{
 \renewcommand{\claimTextWissen}{living}
 \renewcommand{\claimTextLeben}{knowledge}
 \renewcommand{\claimPunktXShift}{-4.7mm}
 \renewcommand{\claimLebenXShift}{4.77mm}
 \renewcommand{\claimWWUXShift}{0mm}
 \renewcommand{\claimWWUXXShift}{2.3366mm}
+\renewcommand{\claimDeEn}{-en}
 }
+\DeclareOption{english}{
+\switchToEnglish
+}
+\def\claimSidebarFn{\includegraphics{wwu-claim-sidebar\claimDeEn}}
+\newcommand{\claimMainFn}{\includegraphics{wwu-claim\claimDeEn}}
+\newcommand{\claimTitleFn}{\includegraphics{wwu-claim-title\claimDeEn}}
+\newcommand{\logoHeadlineFn}{\includegraphics{wwu-logo-headline}}
+\newcommand{\logoTitleFn}{\includegraphics{wwu-logo-title}}
+\newcommand{\logoTitleSmallFn}{\includegraphics{wwu-logo-title-small}}
+\newcommand{\claimSidebar}{\claim{1.25}{90}}
+\newcommand{\claimMain}{\claim{1}{0}}
+\newcommand{\claimTitle}{\claim{1.75}{0}}
+\newcommand{\logoHeadline}{\wwulogo{0.44}}
+\newcommand{\logoTitle}{\wwulogo{1.12}}
+\newcommand{\logoTitleSmall}{\wwulogo{0.6}}
+\DeclareOption{fast}{
+\renewcommand{\claimSidebar}{\claimSidebarFn}
+\renewcommand{\claimMain}{\claimMainFn}
+\renewcommand{\claimTitle}{\claimTitleFn}
+\renewcommand{\logoHeadline}{\logoHeadlineFn}
+\renewcommand{\logoTitle}{\logoTitleFn}
+\renewcommand{\logoTitleSmall}{\logoTitleSmallFn}
+}
+
 % % create a presentation in 16 to 10 format
 \DeclareOption{wide}{%
   \geometry{paperwidth=15.36cm,paperheight=9.6cm}
@@ -143,7 +179,7 @@
     below of=wissen] (WWU) {\textcolor{pantoneblack7!50}{\fontsize{3.8mm}{1mm}\selectfont
         \usefont{T1}{fMt}{}{}
         WWU}};
-  %% Münster
+  %% Mï¿½nster
   \node[
     xshift=\claimWWUXXShift,
     right of=WWU] {\textcolor{pantoneblack7!50}{\fontsize{3.8mm}{1mm}\selectfont 
@@ -206,7 +242,7 @@
              minimum width=44.75mm,
              yshift=-15.7mm,
              xshift=0.05mm] {};
-  % Westfälische
+  % Westfï¿½lische
   \node[mytextnode,
   yshift=-7.0mm,
   xshift=39.8mm] {
@@ -214,7 +250,7 @@
     \usefont{T1}{fMt}{b}{sc}
     \textls[15]{Westf\"alische}
   };
-  % Wilhelms-Universität
+  % Wilhelms-Universitï¿½t
   \node[mytextnode,
   yshift=-11.5mm,
   xshift=47.7mm] {
@@ -222,7 +258,7 @@
     \usefont{T1}{fMt}{b}{sc}
     \textls[15]{Wilhelms-Universit\"at}
   };
-  % Münster
+  % Mï¿½nster
   \node[mytextnode,
   yshift=-15.8mm,
   xshift=35.6mm] {
@@ -235,7 +271,7 @@
 } % end of the logo
 
 
-\@ifclassloaded{beamer}{
+\@ifclassloaded{beamer}{%
 
 % use MetaNormal Roman everywhere
 \RequirePackage{meta}
@@ -305,13 +341,16 @@
 
 % sidebar
 \setbeamertemplate{sidebar right}{
+  {
+  \skipexternalization
   \begin{tikzpicture}[remember picture, overlay]
     \node[anchor=east,inner sep=0,yshift=-2.25cm,xshift=0.3mm] (sidebarclaim) at (current page.east) {
       \begin{colormixin}{25!white}
-        \claim{1.25}{90}
+        \claimSidebar
      \end{colormixin}
     };
   \end{tikzpicture}
+  }
 }
 
 % frame title
@@ -330,11 +369,14 @@
 \setbeamertemplate{headline}{
   \fontsize{6pt}{1pt}
   \selectfont
+  {
+  \skipexternalization
   \begin{tikzpicture}[remember picture, overlay]
     \node[xshift=0.54cm,yshift=-1.21cm,
     anchor=south west,
-    inner sep=0] at (current page.north west) {\wwulogo{0.44}};
+    inner sep=0] at (current page.north west) {\logoHeadline};
   \end{tikzpicture}
+  }
   \hfill
   \insertshorttitle 
   \hskip2mm %title on the right
@@ -381,6 +423,8 @@
 
    \end{tikzpicture}
   \end{picture}
+  {
+  \skipexternalization
   \begin{tikzpicture}[remember picture,overlay]
     %% the 1. rectangle
     \node [xshift=-0.1cm,yshift=-1.95cm] at (current page.north east)
@@ -421,11 +465,12 @@
     rectangle (helpernode6);
     %% the claim
     \node [xshift=1.72cm,yshift=0.8cm] at (current page.south west)
-    (claim) {\claim{1}{0}};
+    (claim) {\claimMain};
     %% the logo
     \node [xshift=0.39cm,yshift=-1cm,anchor=west] at (current page.north west)
-    {\wwulogo{0.6}};
+    {\logoTitleSmall};
   \end{tikzpicture}
+  }
 } %end title page
 
 % footline
@@ -472,7 +517,7 @@
 %  \node [yshift=-0.8mm,xshift=-0.35mm]at (current page.center) {\includegraphics[width=21cm]{seite_einzeln}};
     %% the logo
     \node [xshift=6.4cm,yshift=-2.5cm] at (current page.north west)
-    {\wwulogo{1.12}};
+    {\logoTitle};
     %% the title
     \node (greaternode) [xshift=1.4cm,yshift=-7.86cm,anchor=base west] at (current page.north west)
     [inner sep=0mm] {
@@ -541,7 +586,7 @@
     ] {};
     %% the claim
     \node [xshift=1.4cm,yshift=1.4cm, inner sep=0, anchor=south west] at (current page.south west)
-    (claim) {\claim{1.75}{0}};
+    (claim) {\claimTitle};
     \node [xshift=-1.4cm,yshift=1.4cm, anchor=south east] at (current page.south east)
     [inner sep=0mm] {%,align=right] {
       \@institutelogo
