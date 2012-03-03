@@ -8,7 +8,7 @@ cd $TEMPDIR
 mkdir 'Ansichts-PDF'
 mkdir 'LaTeX Vorlagen'
 
-cp titlepage.tex wwustyle.sty beamer.tex README 'LaTeX Vorlagen'
+cp titlepage.tex wwustyle.sty beamer.tex preparefastmode.sh README 'LaTeX Vorlagen'
 cp beamer.tex wwustyle.sty 'Ansichts-PDF'
 cd 'Ansichts-PDF'
 

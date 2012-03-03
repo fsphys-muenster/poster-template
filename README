@@ -5,7 +5,7 @@ introduced in the corporate design manual in documentclasses like
 article or book.
 
 Usage:      Just put \usepackage{wwustyle} in the header of your tex
-            file, thats all!
+            file, that's all!
             You may reset the main color by using COLORCODE
             as an option to the package, where COLORCODE is the
             name of the color (in one word, all in small letters) 
@@ -13,10 +13,11 @@ Usage:      Just put \usepackage{wwustyle} in the header of your tex
             to be found on the web:
             http://www.wwu.de/corporate-design/
             For usage of the english claim "living.knowledge" instead of
-            "wissen.leben" in the design, add the option "english" when loading
-            the wwustyle style.
+            "wissen.leben" in the design, add the option "english" when
+            loading the wwustyle style.
             Furthermore, if your documentclass is 'beamer' and you
-            choose the option "wide", you will get presentations in 16:10. 
+            choose the option "wide", you will get presentations in
+            16:10. 
 Remark:     This uses the MetaNormal font, which is to be found as
             a latex font on the homepage of the WWU and should be available 
             for employees in the tex distribution on the WWU workstations.
@@ -27,6 +28,8 @@ Maintainer: Martin Drohmann (mdrohmann at uni-muenster dot de)
 
 Changelog:
 
+Version: 1.5 (02.03.2012) Add preparefastmode.sh script automatically creating
+                          image files for option "fast"
 Version: 1.4 (01.03.2012) Add option "fast" which reads in precompiled pictures
                           instead of generating them with tikz on every frame.
                           See 'beamer.tex' for usage information on this feature.
