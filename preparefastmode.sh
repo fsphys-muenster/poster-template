@@ -1,7 +1,5 @@
 #!/bin/sh
 
-# . _DEBUG.sh
-
 # generates the image files needed for "fast" option in the wwustyle package
 #
 # copy this file into a directory found in your system's PATH variable.
