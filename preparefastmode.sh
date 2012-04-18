@@ -25,6 +25,14 @@ then
 fi
 
 DOCFILE=$1
+
+# skip rest of script if image files exist already!
+if [ -f wwu-claim.pdf ]
+then
+	echo 'Files already exist!'
+	exit 0
+fi
+
 OPWD=$PWD
 TEMPDIR=$(mktemp -d /tmp/$CMD.XXXXX)
 
@@ -33,12 +41,12 @@ if [ ! -f $DOCFILE ]
 then
 	echo "Document file not found: $DOCFILE... Exiting!"
 	exit 1
-fi 
+fi
 
 cp $DOCFILE $TEMPDIR
 cd $TEMPDIR
 
-sed -ne '/\\begin{document}/ q; s/\\tikzexternalprefix{[^}]*}//; s/\\usepackage\[[^]]*\]{wwustyle}/\\usepackage{wwustyle}/; p' $DOCFILE > tmp.tex
+sed -ne '/\\begin{document}/ q; s/\\tikzsetexternalprefix{[^}]*}//; s/\\usepackage\[[^]]*\]{wwustyle}/\\usepackage{wwustyle}/; p' $DOCFILE > tmp.tex
 echo > infiles
 sed -ne 's/^.*\\input{\([^}]*\)}.*$/\1/p' tmp.tex >> infiles
 
@@ -70,6 +78,8 @@ not be usable!
 
 See wwu-images.log for more information.
 EOF
+rm -rf $TEMPDIR
+exit 1
 else
 	cp wwu-*.pdf $OPWD
 	cp tmp.log $OPWD/wwu-images.log
