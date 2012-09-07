@@ -28,6 +28,9 @@ Maintainer: Martin Drohmann (mdrohmann at uni-muenster dot de)
 
 Changelog:
 
+Version: 1.7 (07.09.2012) Updated english claim (living.knowledge)
+                          distances
+Version: 1.6 (07.09.2012) Added institutelogo{,small} for institute logos
 Version: 1.5 (02.03.2012) Add preparefastmode.sh script automatically creating
                           image files for option "fast"
 Version: 1.4 (01.03.2012) Add option "fast" which reads in precompiled pictures
