@@ -44,7 +44,8 @@ fi
 cp $DOCFILE $TEMPDIR
 cd $TEMPDIR
 
-sed -ne '/\\begin{document}/ q; s/\\tikzsetexternalprefix{[^}]*}//; s/\\usepackage\[[^]]*\]{wwustyle}/\\usepackage{wwustyle}/; p' $DOCFILE > tmp.tex
+
+sed -ne '/\\begin{document}/ q; s/\\tikzsetexternalprefix{[^}]*}//; /\\usepackage\[[^]]*\]{wwustyle}/ { s/\[fast,/\[/; s/,fast,/,/; s/,fast\]/\]/; }; p' $DOCFILE > tmp.tex
 echo > infiles
 sed -ne 's/^.*\\input{\([^}]*\)}.*$/\1/p' tmp.tex >> infiles
 
