@@ -28,6 +28,7 @@ Maintainer: Martin Drohmann (mdrohmann at uni-muenster dot de)
 
 Changelog:
 
+Version: 1.8 (29.09.2012) Updated claim in fast mode (watermark)
 Version: 1.7 (07.09.2012) Updated english claim (living.knowledge)
                           distances
 Version: 1.6 (07.09.2012) Added institutelogo{,small} for institute logos

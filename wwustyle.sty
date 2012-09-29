@@ -123,7 +123,8 @@
 \newcommand{\logoHeadlineFn}{\includegraphics{wwu-logo-headline}}
 \newcommand{\logoTitleFn}{\includegraphics{wwu-logo-title}}
 \newcommand{\logoTitleSmallFn}{\includegraphics{wwu-logo-title-small}}
-\newcommand{\claimSidebar}{\claim{1.25}{90}}
+\newcommand{\claimSidebar}{\begin{colormixin}{25!white}\claim{1.25}{90}
+\end{colormixin}}
 \newcommand{\claimMain}{\claim{1}{0}}
 \newcommand{\claimTitle}{\claim{1.75}{0}}
 \newcommand{\logoHeadline}{\wwulogo{0.44}}
@@ -385,9 +386,7 @@
   \skipexternalization
   \begin{tikzpicture}[remember picture, overlay]
     \node[anchor=east,inner sep=0,yshift=-2.25cm,xshift=0.3mm] (sidebarclaim) at (current page.east) {
-      \begin{colormixin}{25!white}
         \claimSidebar
-     \end{colormixin}
     };
   \end{tikzpicture}
   }
