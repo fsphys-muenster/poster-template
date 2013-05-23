@@ -4,6 +4,7 @@
 % A beamer style file following the corporate design of the WWU
 % Muenster.
 %
+% Version  1.8 (23.05.2013) Fixed some font warnings (Cudos to Dustin Demuth for the fix)
 % Version: 1.7 (07.09.2012) Updated english claim (living.knowledge)
 %                           distances
 % Version: 1.6 (07.09.2012) Added institutelogo{,small} for institute logos
@@ -183,7 +184,7 @@
   \node (wissen)  {
     \color{pantoneblack7}
     \fontsize{3.8mm}{1mm}\selectfont 
-    \usefont{T1}{fMt}{}{}
+    \usefont{T1}{fMt}{m}{n}
     \claimTextWissen
   };
   %% Punkt
@@ -200,7 +201,7 @@
     right of=wissen] (leben) {
       \color{pantoneblack7}
       \fontsize{3.8mm}{1mm}\selectfont
-      \usefont{T1}{fMt}{}{}
+      \usefont{T1}{fMt}{m}{n}
       \claimTextLeben
     };
   %% WWU
@@ -208,13 +209,13 @@
     xshift=\claimWWUXShift,
     yshift=\claimWWUYShift,
     below of=wissen] (WWU) {\textcolor{pantoneblack7!50}{\fontsize{3.8mm}{1mm}\selectfont
-        \usefont{T1}{fMt}{}{}
+        \usefont{T1}{fMt}{m}{n}
         WWU}};
   %% M�nster
   \node[
     xshift=\claimWWUXXShift,
     right of=WWU] {\textcolor{pantoneblack7!50}{\fontsize{3.8mm}{1mm}\selectfont 
-        \usefont{T1}{fMt}{}{}
+        \usefont{T1}{fMt}{m}{n}
         M\"unster}};
 \end{tikzpicture}
 } % end of newcommand
