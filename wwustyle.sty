@@ -4,7 +4,8 @@
 % A beamer style file following the corporate design of the WWU
 % Muenster.
 %
-% Version  1.8 (23.05.2013) Fixed some font warnings (Cudos to Dustin Demuth for the fix)
+% Version: 1.9 (07.04.2014) Fixed overfull hboxes (Cudos to Matthias Kirchner for the fix)
+% Version: 1.8 (23.05.2013) Fixed some font warnings (Cudos to Dustin Demuth for the fix)
 % Version: 1.7 (07.09.2012) Updated english claim (living.knowledge)
 %                           distances
 % Version: 1.6 (07.09.2012) Added institutelogo{,small} for institute logos
@@ -521,22 +522,22 @@
 } %end title page
 
 % footline
-\setbeamertemplate{footline}{
-  \fontsize{6pt}{1pt}
-  \selectfont
-  \vskip4pt
-  \color{maincolor}
-  \rule{\textwidth}{1.2pt}\\ % horizontal line
-  \vskip2pt
-  \rule{\textwidth}{0.8pt}\\ % horizontal line
-  \vskip5pt
-  \rule{\textwidth}{1.2pt} % horizontal line
-  \vskip2pt
-  \color{black}
-  \hspace{5mm}
-  \insertshortauthor
-  \vskip4pt
-}% end footline
+\setbeamertemplate{footline}{%
+  \fontsize{6pt}{1pt}%
+  \selectfont%
+  \vskip4pt%
+  \color{maincolor}%
+  \rule{\textwidth}{1.2pt}% horizontal line
+  \vskip2pt%
+  \rule{\textwidth}{0.8pt}% horizontal line
+  \vskip5pt%
+  \rule{\textwidth}{1.2pt}% horizontal line
+  \vskip2pt%
+  \color{black}%
+  \hspace{5mm}%
+  \insertshortauthor%
+  \vskip4pt%
+  }% end footline
 } % true-branch of ifclassloaded
 {
 
