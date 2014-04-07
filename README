@@ -22,12 +22,12 @@ Remark:     This uses the MetaNormal font, which is to be found as
             a latex font on the homepage of the WWU and should be available 
             for employees in the tex distribution on the WWU workstations.
 
-Author:     Sven Kaulmann 
-Maintainer: Martin Drohmann (mdrohmann at uni-muenster dot de)
-
+Author:     Sven Kaulmann (sven.kaulmann at uni-muenster dot de)
 
 Changelog:
 
+Version: 1.9 (07.04.2014) Fixed overfull hboxes (Cudos to Matthias Kirchner for the fix)
+Version: 1.8 (23.05.2013) Fixed some font warnings (Cudos to Dustin Demuth for the fix)
 Version: 1.8 (29.09.2012) Updated claim in fast mode (watermark)
 Version: 1.7 (07.09.2012) Updated english claim (living.knowledge)
                           distances
