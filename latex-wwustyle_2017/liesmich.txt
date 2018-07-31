@@ -1,0 +1,10 @@
+Das Verzeichnis latex-wwustyle_2017 enthält
+wwwustyle.sty       LaTeX Stildatei für das CD der WWU 2017
+titlepage.tex       Musterdatei zum Satz von Titelseiten
+poster.tex          Musterdatei für Poster
+
+Das Verzeichnis latex-wwustyle_2017 sollte in den TeX-Verzeichnisbaum
+unter [root]\tex\latex kopiert werden.
+
+Ulrich Grabowsky
+grabowsky@satzundsonders.de
