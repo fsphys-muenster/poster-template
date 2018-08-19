@@ -97,16 +97,13 @@
     \columnsep=20mm
 }
 
-\newcommand{\claimText}{wissenleben}
-\newcommand{\switchToEnglish}
-{
-\renewcommand{\claimText}{livingknowledge}
+\newcommand*{\claimText}{}
+\newcommand*{\switchToEnglish}{
+	\renewcommand*{\claimText}{_eng}
 }
 \DeclareOption{english}{
-\switchToEnglish
+	\switchToEnglish
 }
-\newcommand{\logoAzPoster}{\wwulogo{3.5}}
-\newcommand{\logoAiPoster}{\wwulogo{4.12}}
 
 \ProcessOptions\relax
 
@@ -115,104 +112,16 @@
 
 %% ========= Images and Graphics ============
 
-% the claim as a tikzpicture, it uses two parameters:
-%% \parameter 1 the scale
-%% \parameter 2 the rotation
-%% #3 Farbe
-\newcommand{\claim}[3]{%
-    \strut\hskip\posterClaimXShift\rlap{\includegraphics[scale=#1]{\claimText#3}}%
+% the claim with \includegraphics
+%% parameter #1: scale
+\newcommand*{\claim}[1]{%
+	\strut\hskip\posterClaimXShift\rlap{\includegraphics[scale=#1]{WWU_Claim_2017\claimText_negativ}}%
 }
 
-%% the logo as tikzpicture, is takes one parameter
-%% \parameter 1 the scale
-\newcommand{\wwulogoposter}[1]{\wwu@logo{#1}{white}}
-
-\newcommand*{\wwu@logo}[2]{%
-  \begin{tikzpicture}[
-    node distance=1.866666666mm,
-    transform shape,
-    scale=#1]
-    %scale=1.02]
-    \tikzstyle{every node}=[inner sep=0mm, fill=#2]
-    \tikzstyle{mytextnode}=[inner sep=0mm, below left of=bar,fill=none,
-    color=#2]
-    % the first bar
-  \node[rectangle,
-             color=#2,
-             minimum height=1.6mm,
-             minimum width=0.7mm] (bar)  {};
-  % the second bar
-  \node[below of = bar,
-            rectangle,
-             color=#2,
-            minimum height=0.7mm,
-            minimum width=2.6mm,
-            yshift=0.26mm] {};
-  % the third bar
-  \node[below of = bar,
-             rectangle,
-             color=#2,
-             minimum height=1.6mm,
-             minimum width=4.5mm,
-             yshift=-3.2mm] {};
-  % the fourth bar
-  \node[below left of=bar,
-            rectangle,
-             color=#2,
-            minimum height=1.5mm,
-            minimum width=17.8mm,
-            yshift=-7mm,
-            xshift=-12.1mm] (fourth) {};
-  % the fifth bar
-  \node[below left of=bar,
-             rectangle,
-             color=#2,
-             minimum height=1.6mm,
-             minimum width=17.8mm,
-             yshift=-7mm,
-             xshift=14.85mm] (fifth) {};
-  % the sixth bar
-  \node[below of=bar,
-             rectangle,
-             color=#2,
-             minimum height=0.7mm,
-             minimum width=44.75mm,
-             yshift=-10.7mm,
-             xshift=0.05mm] {};
-  % the  seventh bar
-  \node[below of=bar,
-             rectangle,
-             color=#2,
-             minimum height=1.6mm,
-             minimum width=44.75mm,
-             %yshift=-17.5mm,
-             yshift=-17.8mm,
-             xshift=0.05mm] {};
-  \node[mytextnode,
-  yshift=-9.9mm,
-  xshift=40mm] {
-    \fontsize{10.6mm}{1mm}\selectfont
-    \usefont{T1}{fMt}{b}{sc}
-    \textls[15]{WWU}
-  };
-  \node[mytextnode,
-  yshift=-17mm,
-  xshift=40.1mm] {
-    \fontsize{4.3mm}{1mm}\selectfont
-    \usefont{T1}{fMt}{m}{n}
-    \textls[15]{M\spatium \"U\spatium N\spatium S\spatium T\spatium E\spatium R}
-  };
-
-  \end{tikzpicture}
-} % end of the logo
-
-%
-\newcommand*{\spatium}{\kern0.23em}
-
-% define the institute logo command
-\newcommand{\@institutelogo}{}
-\newcommand{\institutelogo}[1]{%
-  \renewcommand{\@institutelogo}{#1}
+% WWU logo with \includegraphics
+%% parameter #1: scale
+\newcommand*{\wwulogoposter}[1]{%
+	\includegraphics[scale=#1]{WWUMuenster_Logo_2017_negativ}%
 }
 
 \set@poster
@@ -242,7 +151,7 @@
     {\wwulogoposter{\posterLogoScale}};
     %% the claim
     \node [xshift=\posterClaimXShift, yshift=\posterClaimYShift, inner sep=0, anchor=south west] at (current page.south west)
-    (claim) {\claim{\posterClaimScale}{0}{white}};
+    (claim) {\claim{\posterClaimScale}};
   \end{tikzpicture}%
   }\ignorespaces
 }
