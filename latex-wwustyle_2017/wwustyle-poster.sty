@@ -384,14 +384,13 @@
 % posterbox entspricht im wesentlichen \fbox.
 \newbox\@posterfbox
 
-\newcommand{\posterbox}[1]{%
-    \fboxsep=10mm
-    \fboxrule=1pt
+\newcommand{\posterbox}{%
+    \fboxsep=10mm%
+    \fboxrule=1pt%
     \setbox\@posterfbox\vbox\bgroup%
-    \hsize=\linewidth
-    \advance\hsize by -2\fboxsep
-    \advance\hsize by -2\fboxrule
-    #1\par
+    \hsize=\linewidth%
+    \advance\hsize by -2\fboxsep%
+    \advance\hsize by -2\fboxrule%
 }
 
 \def\endposterbox{\egroup{\posterfbox{\box\@posterfbox}}}
