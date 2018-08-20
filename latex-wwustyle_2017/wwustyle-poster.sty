@@ -57,40 +57,32 @@
 \DeclareOption{pantoneprozessyellow}{%
     \set@wwu@maincolor{pantoneprozessyellow}{pantone312}}
 
-% default paper size: DIN A0
-\newcommand*{\din@format}{a0paper}
-\let\set@poster\set@poster@null
-\DeclareOption{a0poster}{%
-    \let\set@poster\set@poster@null
+\renewcommand*{\maketitle}{\make@poster@title}
+
+\newif\if@paper@set
+\DeclareOption{a0paper}{
+	\@paper@settrue
+	\def\posterLogoScale{3.5}%
+	\def\posterClaimScale{3.5}%
+	\def\posterLogoXShift{15cm}%
+	\def\posterLogoYShift{-7cm}%
+	\def\posterClaimXShift{1cm}%
+	\def\posterClaimYShift{2.8cm}%
+	\paperwidth=841mm
+	\paperheight=1189mm
+	\columnsep=20mm
 }
-\newcommand*{\set@poster@null}{
-    \renewcommand*{\din@format}{a0paper}%
-    \renewcommand*{\maketitle}{\make@poster@title}%
-    \def\posterLogoScale{3.5}%
-    \def\posterClaimScale{3.5}%
-    \def\posterLogoXShift{15cm}%
-    \def\posterLogoYShift{-7cm}%
-    \def\posterClaimXShift{1cm}%
-    \def\posterClaimYShift{2.8cm}%
-    \paperwidth=841mm
-    \paperheight=1189mm
-    \columnsep=20mm
-}
-\DeclareOption{a1poster}{%
-    \let\set@poster\set@poster@one
-}
-\newcommand*{\set@poster@one}{%
-    \renewcommand*{\din@format}{a1paper}
-    \renewcommand*{\maketitle}{\make@poster@title}
-    \def\posterLogoScale{2.5}%
-    \def\posterClaimScale{2.5}%
-    \def\posterLogoXShift{11.3cm}%
-    \def\posterLogoYShift{-4.9cm}%
-    \def\posterClaimXShift{1cm}%
-    \def\posterClaimYShift{1.9cm}%
-    \paperwidth=594mm
-    \paperheight=841mm
-    \columnsep=20mm
+\DeclareOption{a1paper}{
+	\@paper@settrue
+	\def\posterLogoScale{2.5}%
+	\def\posterClaimScale{2.5}%
+	\def\posterLogoXShift{11.3cm}%
+	\def\posterLogoYShift{-4.9cm}%
+	\def\posterClaimXShift{1cm}%
+	\def\posterClaimYShift{1.9cm}%
+	\paperwidth=594mm
+	\paperheight=841mm
+	\columnsep=20mm
 }
 
 \newcommand*{\claimText}{}
@@ -107,6 +99,14 @@
 }
 
 \ProcessOptions\relax
+
+% produce error if neither a0paper nor a1paper were set
+\if@paper@set\else
+	\PackageError{wwustyle-poster}{%
+		Poster size has not been set!\MessageBreak%
+		You must specify either a0paper or a1paper.%
+	}
+\fi
 
 % save the specified color as “maincolor”
 \colorlet{maincolor}{\bg@maincolor}
@@ -129,8 +129,6 @@
 \newcommand*{\wwulogoposter}[1]{%
 	\includegraphics[scale=#1]{wwustyle/WWUMuenster_Logo_2017_negativ}%
 }
-
-\set@poster
 
 \newcommand{\make@poster@title}{ %replace standard LaTeX-command
  {%
