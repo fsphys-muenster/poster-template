@@ -52,15 +52,16 @@ mkdir -p en/template/
 
 cp -r "$fontdir/" "$texdir/wwustyle/" \
 	"$texdir"/*.sty \
-	"$texdir/poster.tex" \
+	"$texdir/poster_de.tex" \
 	'de/vorlage/'
 cp -r "$fontdir/" "$texdir/wwustyle/" \
 	"$texdir"/*.sty \
-	"$texdir/poster.tex" \
+	"$texdir/poster_en.tex" \
 	'en/template/'
+mv de/vorlage/poster_de.tex de/vorlage/poster.tex
+mv en/template/poster_en.tex en/template/poster.tex
 
 cp -r de/vorlage/ de/beispiele/
-mv de/beispiele/poster.tex de/beispiele/poster.tex
 cp -r en/template/ en/examples/
 
 rm -r "$texdir/"

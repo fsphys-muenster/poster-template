@@ -1,5 +1,5 @@
 \documentclass[a1paper]{article}
-\usepackage[pantone312]{wwustyle-poster}
+\usepackage[english, pantone312]{wwustyle-poster}
 
 \begin{document}
 
@@ -15,22 +15,17 @@
 	\vspace{-10mm}
 	\raggedright
 
-	\section*{Erläuterungen zur\\Datei \texttt{poster.tex}}
-	Die Postergröße muss mithilfe der Option \verb+a0paper+ oder \verb+a1paper+ eingestellt werden (andere Größen stehen nicht zur Verfügung).
-	Für den Text wird die Schriftart „Meta Office Pro“ verwendet.
+	\section*{Explanation of the\\file \texttt{poster.tex}}
+	The poster size must be set using the option \verb+a0paper+ or \verb+a1paper+ (other sizes are not available).
+	The font “Meta Office Pro” will be used for the text.
 
-	Der Text in diesem Dokument ist bewusst mit \LaTeX-Befehlen wie \verb+\vspace+
-	und \verb+\raggedright+ durchsetzt. Es wird sich bei der Gestaltung von Postern nicht
-	vermeiden lassen, Räume und Formatierungen manuell zu setzen.
+	The text in this document is consciously interspersed with \LaTeX{} commands such as \verb+\vspace+ and \verb+\raggedright+.
+	In general, it will not be possible to avoid using manual spacing and formatting when designing a poster.
 
-	Die Umgebung \verb+posterbox+ entspricht dem Befehl \verb+\fbox+, zeichnet jedoch einen
-	Rahmen in der jeweils gewählten Sonderfarbe. Die erste Umgebung \verb+posterbox+ muss
-	direkt an \verb+\maketitle+ anschließen. Andernfalls balancieren sich die rechte und
-	linke Kolumne nicht korrekt aus.
+	The environment \verb+posterbox+ is equivalent to the command \verb+\fbox+, but it draws a frame in the selected special color.
 
-	Die Makros \verb+\author+ und \verb+\title+ sind bei Postern wirkungslos.
-	\verb+\posterauthor+ und \verb+\postersubject+ setzen den ihnen übergebenen
-	Text in der entsprechenden Formatierung.
+	The commands \verb+\author+ and \verb+\title+ do not have any effect in this poster template.
+	\verb+\posterauthor+ and \verb+\postersubject+ set the passed text using the corresponding formatting.
 
 	\bigskip
 
