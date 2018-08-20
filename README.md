@@ -6,7 +6,7 @@ https://sso.uni-muenster.de/intern/marketing/informationsmedien/printvorlagen.ht
 zu finden.
 
 Eine fertige `.zip`-Datei mit Vorlagen auf Deutsch und Englisch sowie allen
-Beispiel-Präsentationen erhält man durch ausführen der Datei [`build.sh`](build.sh).
+Beispiel-Postern erhält man durch Ausführen der Datei [`build.sh`](build.sh).
 
 ## Hinweis zu den Schriftarten
 Zur Verwendung der Vorlage wird die Schriftart „Meta Office Pro“ von FontFont
@@ -30,7 +30,7 @@ https://sso.uni-muenster.de/intern/marketing/informationsmedien/printvorlagen.ht
 within the WWU internal area.
 
 A complete `.zip` file with templates in German and English as well as all
-example presentations can be obtained by running [`build.sh`](build.sh).
+example posters can be obtained by running [`build.sh`](build.sh).
 
 ## A note on fonts
 In order to use the template, the font “Meta Office Pro” by FontFont (LinoType GmbH)
