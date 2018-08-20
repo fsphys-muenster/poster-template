@@ -1,4 +1,31 @@
-\documentclass[a1paper]{article}
+% !TeX program = lualatex
+% ACHTUNG: Diese Datei muss mit xelatex oder lualatex ausgeführt werden!
+
+% Derzeit kann die Vorlage nur mit den Papierformaten DIN A0
+% und DIN A1 (hochkant) verwendet werden. Andere Formate
+% führen zu Fehlermeldungen.
+% Auch „german“ muss hier angegeben werden, damit die Sprache
+% (z.B. in siunitx) auf Deutsch gestellt wird.
+\documentclass[a1paper, german, ngerman]{article}
+% Spracheinstellung
+\usepackage{polyglossia}
+\setmainlanguage{german}
+
+% Offizielles WWU-LaTeX-Paket für Poster: wwustyle-poster
+% Die Verwendung von wwustyle erfordert xelatex oder lualatex
+% (aufgrund der verwendeten Schriftarten).
+% Bei Fragen hierzu wenden Sie sich an fsphys@uni-muenster.de
+% Mögliche Optionen:
+% - english: Verwendet englischen Claim („living.knowledge“)
+% - Verschiedene Farbvarianten:
+%   pantoneblack7 („schwarz“)
+%   pantone234 („magenta“)
+%   pantone7462 („dunkelblau“)
+%   pantone312 („hellblau“)
+%   pantone315 („dunkelgrün/blau“)
+%   pantone3135 („grün“)
+%   pantone369 („hellgrün“)
+%   pantone390 („olivgrün“)
 \usepackage[pantone312]{wwustyle-poster}
 
 \begin{document}

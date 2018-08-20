@@ -1,4 +1,28 @@
-\documentclass[a1paper]{article}
+% !TeX program = lualatex
+% NOTE: This file must be run using xelatex or lualatex!
+
+% At this time, the template can only be used with the paper
+% formats DIN A0 and DIN A1 (portrait). Other formats will
+% cause error messages.
+\documentclass[a1paper, english]{article}
+% language setting
+\usepackage{polyglossia}
+\setmainlanguage{english}
+
+% Official WWU LaTeX package for presentations: wwustyle-poster
+% The use of wwustyle requires xelatex or lualatex (due to the fonts).
+% If you have any questions regarding this, contact fsphys@uni-muenster.de
+% Available options:
+% - english: uses the English claim (“living.knowledge”)
+% - Color variants:
+%   pantoneblack7 (“black”)
+%   pantone234 (“magenta”)
+%   pantone7462 (“dark blue”)
+%   pantone312 (“light blue”)
+%   pantone315 (“dark green/blue”)
+%   pantone3135 (“green”)
+%   pantone369 (“light green”)
+%   pantone390 (“olive green”)
 \usepackage[english, pantone312]{wwustyle-poster}
 
 \begin{document}
