@@ -289,10 +289,10 @@
 
 \newcommand*{\posterauthor}[1]{{\large #1\par}\vskip1\baselineskip}
 
-% posterbox entspricht im wesentlichen \fbox.
+% posterbox is essentially \fbox
 \newbox\@posterfbox
 
-\newcommand{\posterbox}{%
+\newcommand*{\posterbox}{%
     \fboxsep=10mm%
     \fboxrule=1pt%
     \setbox\@posterfbox\vbox\bgroup%
@@ -304,47 +304,47 @@
 \def\endposterbox{\egroup{\posterfbox{\box\@posterfbox}}}
 
 \long\def\posterfbox#1{%
-  \leavevmode
+  \leavevmode%
   \setbox\@tempboxa\hbox{%
-    \color@begingroup
-      \kern\fboxsep{#1}\kern\fboxsep
+    \color@begingroup%
+      \kern\fboxsep{#1}\kern\fboxsep%
     \color@endgroup}%
   \poster@frameb@x\relax}
 
 \def\poster@frameb@x#1{%
-  \@tempdima\fboxrule
-  \advance\@tempdima\fboxsep
-  \advance\@tempdima\dp\@tempboxa
+  \@tempdima\fboxrule%
+  \advance\@tempdima\fboxsep%
+  \advance\@tempdima\dp\@tempboxa%
   \hbox{%
     \lower\@tempdima\hbox{%
       \vbox{%
-    \color@begingroup
-    \color{maincolor}
-        \hrule\@height\fboxrule
-    \color@endgroup
+    \color@begingroup%
+    \color{maincolor}%
+        \hrule\@height\fboxrule%
+    \color@endgroup%
         \hbox{%
-    \color@begingroup
-    \color{maincolor}
-          \vrule\@width\fboxrule
-    \color@endgroup
+    \color@begingroup%
+    \color{maincolor}%
+          \vrule\@width\fboxrule%
+    \color@endgroup%
           #1%
           \vbox{%
-            \vskip\fboxsep
-            \box\@tempboxa
+            \vskip\fboxsep%
+            \box\@tempboxa%
             \vskip\fboxsep}%
           #1%
-    \color@begingroup
-    \color{maincolor}
-          \vrule\@width\fboxrule
-    \color@endgroup
+    \color@begingroup%
+    \color{maincolor}%
+          \vrule\@width\fboxrule%
+    \color@endgroup%
           }%
-    \color@begingroup
-    \color{maincolor}
-        \hrule\@height\fboxrule
-    \color@endgroup
-        }%
-                          }%
-        }%
+    \color@begingroup%
+    \color{maincolor}%
+        \hrule\@height\fboxrule%
+    \color@endgroup%
+      }%
+    }%
+  }%
 }
 
 \pagestyle{empty}
