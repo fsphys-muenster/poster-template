@@ -18,11 +18,7 @@
 %% =============== required packages ============================
 \RequirePackage{tikz}
 \RequirePackage{xcolor}
-
-\RequirePackage[T1]{fontenc}
-%% use MetaRoman Normal as the standard non-serif font
-\renewcommand{\sfdefault}{fMt}
-\RequirePackage{microtype}
+\RequirePackage{graphicx}
 
 %\definecolor{pantoneblack7}{RGB}{62,62,59}
 \definecolor{pantoneblack7}{RGB}{102,102,102}
@@ -105,9 +101,19 @@
 	\switchToEnglish
 }
 
+\newif\if@manualfonts
+\DeclareOption{manualfonts}{
+	\@manualfontstrue
+}
+
 \ProcessOptions\relax
 
-\definecolor{maincolor}{named}{\bg@maincolor}
+% save the specified color as “maincolor”
+\colorlet{maincolor}{\bg@maincolor}
+% do font setup if “manualfonts” wasn’t specified
+\if@manualfonts\else
+	\RequirePackage{wwustyle/meta-office-pro}
+\fi
 
 
 %% ========= Images and Graphics ============
@@ -128,7 +134,6 @@
 
 \newcommand{\make@poster@title}{ %replace standard LaTeX-command
  {%
- \sf
  \setlength{\unitlength}{1mm}%
  \begin{tikzpicture}[remember picture,overlay]
     %% Querbalken oben
@@ -156,15 +161,11 @@
   }\ignorespaces
 }
 
-\pdfpageheight=\paperheight
-\pdfpagewidth=\paperwidth
 \textheight=0.77\paperheight
 \topmargin=0.10\paperheight
 \oddsidemargin=\dimexpr \columnsep -1in\relax
 \evensidemargin=\oddsidemargin
 \textwidth=\dimexpr\paperwidth-2\columnsep\relax
-
-\renewcommand{\rmdefault}{fMt}
 
 \leftmargini=20pt
 \renewcommand\normalsize{%
@@ -199,11 +200,11 @@
 }
 \renewcommand\scriptsize{\@setfontsize\scriptsize\@viipt\@viiipt}
 \renewcommand\tiny{\@setfontsize\tiny\@vpt\@vipt}
-\renewcommand\large{\@setfontsize\large{40pt}{48pt}} % author
-\renewcommand\Large{\@setfontsize\Large{60pt}{72pt}} % section
+\renewcommand\large{\@setfontsize\large{40pt}{48pt}}
+\renewcommand\Large{\@setfontsize\Large{60pt}{72pt}}
 \renewcommand\LARGE{\@setfontsize\LARGE{70pt}{84pt}}
 \renewcommand\huge{\@setfontsize\huge{75pt}{90pt}}
-\renewcommand\Huge{\@setfontsize\Huge{80pt}{96pt}} % subcect
+\renewcommand\Huge{\@setfontsize\Huge{80pt}{96pt}}
 \setlength\parindent{0pt}
 \setlength\parskip{3mm plus 0.5mm minus 0.5mm}
 \setlength\smallskipamount{3\p@ \@plus 1\p@ \@minus 1\p@}

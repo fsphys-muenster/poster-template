@@ -1,3 +1,12 @@
+# don’t accidentally commit font files
+*/fonts/Meta*
+# don’t include compiled template PDF files
+tex/*.pdf
+poster.pdf
+# ignore build files
+latex_wwu_poster*
+
+
 ### .gitignore template for TeX from GitHub
 ### https://github.com/github/gitignore/blob/master/TeX.gitignore
 

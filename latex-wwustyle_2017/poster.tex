@@ -1,8 +1,5 @@
-\documentclass{article}
-\usepackage[utf8]{inputenc}
-\usepackage[expansion=false]{microtype}
-\usepackage{cmbright}
-\usepackage[a1poster,pantone315]{wwustyle-poster}
+\documentclass[a1paper]{article}
+\usepackage[a1poster, pantone315]{wwustyle-poster}
 
 \begin{document}
 
@@ -19,17 +16,14 @@
 	\raggedright
 
 	\section*{Erläuterungen zur\\Datei \texttt{poster.tex}}
-	Die Optionen \verb+a0poster+ und \verb+a1poster+ sind mit der Klasse \verb+article+ zu verwenden.
-	Sie schalten auf die entsprechende Ausgabegröße sowie auf die Schrift Meta um.
-	Formeln werden jedoch nach wie vor aus den üblichen \LaTeX-Schriften gesetzt.
-	Alternativ bietet sich die Verwendung des Pakets \verb+cmbright+ an (wie in diesem Dokument geschehen). Wird es \verb+vor+ \verb+wwustyle-poster+
-	eingebunden, ändert es lediglich die Mathematikschriften.
+	Die Optionen \verb+a0poster+ und \verb+a1poster+ sollten entsprechend der Postergröße (\verb+a0paper+ oder \verb+a1paper+) eingestellt werden.
+	Für den Text wird die Schriftart „Meta Office Pro“ verwendet.
 
 	Der Text in diesem Dokument ist bewusst mit \LaTeX-Befehlen wie \verb+\vspace+
 	und \verb+\raggedright+ durchsetzt. Es wird sich bei der Gestaltung von Postern nicht
-	vermeiden lassen, Räume und Formatierungen manuell zu setzten.
+	vermeiden lassen, Räume und Formatierungen manuell zu setzen.
 
-	Die Umgebung \verb+posterbox+  entspricht dem Befehl \verb+\fbox+, zeichnet jedoch einen
+	Die Umgebung \verb+posterbox+ entspricht dem Befehl \verb+\fbox+, zeichnet jedoch einen
 	Rahmen in der jeweils gewählten Sonderfarbe. Die erste Umgebung \verb+posterbox+ muss
 	direkt an \verb+\maketitle+ anschließen. Andernfalls balancieren sich die rechte und
 	linke Kolumne nicht korrekt aus.
@@ -63,8 +57,8 @@
 	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
 
 	$$
-	 p\!\left(X_{vi} = 1\right) = \frac{exp\!\left(\theta_v - \sigma_i\right)\strut}
-	 {\strut 1 + exp\!\left(
+	 p\!\left(X_{vi} = 1\right) = \frac{\exp\!\left(\theta_v - \sigma_i\right)\strut}
+	 {\strut 1 + \exp\!\left(
 	 \theta_v - \sigma_i\right)}
 	$$
 
