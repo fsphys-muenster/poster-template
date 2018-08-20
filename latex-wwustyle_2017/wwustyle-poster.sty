@@ -8,9 +8,14 @@
 %        - english: uses the English claim (“living.knowledge”)
 %        - Color variants (see the Corporate design manual
 %          https://sso.uni-muenster.de/intern/marketing/corporatedesign/cdmanual.html):
-%          pantone312 (“light blue”)
-%          pantone3135 (“green”)
+%          pantoneblack7 (“black”)
+%          pantone234 (“magenta”)
 %          pantone7462 (“dark blue”)
+%          pantone312 (“light blue”)
+%          pantone315 (“dark green/blue”)
+%          pantone3135 (“green”)
+%          pantone369 (“light green”)
+%          pantone390 (“olive green”)
 %
 % Maintainers: Simon May (simon.may@uni-muenster.de)
 %              Fachschaft Physik (fsphys@uni-muenster.de)
@@ -20,42 +25,54 @@
 \RequirePackage{xcolor}
 \RequirePackage{graphicx}
 
-%\definecolor{pantoneblack7}{RGB}{62,62,59}
-\definecolor{pantoneblack7}{RGB}{102,102,102}
-\definecolor{pantone312}{RGB}{0,157,209}    % Hellblau*
-\definecolor{pantone315}{RGB}{0,110,137}    % Dunkelblau*
-\definecolor{pantone3282}{RGB}{0,142,150}   % Dunkelgruen*
-\definecolor{pantone369}{RGB}{122,181,22}   % Hellgruen
-\definecolor{pantone390}{RGB}{177,200,0}    % Olivgruen
-\definecolor{pantone396}{RGB}{223,219,0}    % Blassgruen
-\definecolor{pantoneprozessyellow}{RGB}{255,237,0}
+% available font and background colors
+% CMYK color values have been taken from the WWU corporate design manual
+% https://sso.uni-muenster.de/intern/marketing/corporatedesign/cdmanual.html
+\definecolor{pantoneblack7}{cmyk}{0.00, 0.00, 0.10, 0.90}
+\definecolor{pantone234} {cmyk}{0.30, 1.00, 0.00, 0.05} % magenta
+\definecolor{pantone7462}{cmyk}{1.00, 0.35, 0.00, 0.40} % dark blue
+\definecolor{pantone312} {cmyk}{1.00, 0.00, 0.10, 0.00} % light blue
+\definecolor{pantone315} {cmyk}{1.00, 0.00, 0.20, 0.40} % dark green/blue
+\definecolor{pantone3135}{cmyk}{1.00, 0.00, 0.40, 0.10} % green
+\definecolor{pantone369} {cmyk}{0.60, 0.00, 1.00, 0.00} % light green
+\definecolor{pantone390} {cmyk}{0.40, 0.00, 1.00, 0.00} % olive green
 
-% set pantone390 as the default main color
-% Geaendert in pantone312
-\newcommand*{\bg@maincolor}{pantone312}
+% set pantone312 as the default main color
+\newcommand*{\main@color}{pantone312}
 
-% set the main color
-% for the color definitions see
-% WWU corporate design manual
-\newcommand*{\set@wwu@maincolor}[2]{%
-    \renewcommand*{\bg@maincolor}{#1}%
+% command to set the main color
+% for the color definitions, see the WWU corporate design manual
+% https://sso.uni-muenster.de/intern/marketing/corporatedesign/cdmanual.html
+% parameter #1: color
+\newcommand*{\set@wwu@maincolor}[1]{%
+	\renewcommand*{\main@color}{#1}%
 }
-\DeclareOption{pantoneblack7}{%
-    \set@wwu@maincolor{pantoneblack7}{pantone312}}
-\DeclareOption{pantone312}{% Bilder vorhanden
-    \set@wwu@maincolor{pantone312}{pantone312}}
-\DeclareOption{pantone315}{% Bilder vorhanden
-    \set@wwu@maincolor{pantone315}{pantone315}}
-\DeclareOption{pantone3282}{% Bilder vorhanden
-    \set@wwu@maincolor{pantone3282}{pantone3282}}
-\DeclareOption{pantone369}{%
-    \set@wwu@maincolor{pantone369}{pantone312}}
-\DeclareOption{pantone390}{%
-    \set@wwu@maincolor{pantone390}{pantone312}}
-\DeclareOption{pantone396}{%
-    \set@wwu@maincolor{pantone396}{pantone312}}
-\DeclareOption{pantoneprozessyellow}{%
-    \set@wwu@maincolor{pantoneprozessyellow}{pantone312}}
+
+%% ========= possible package options ===========================
+\DeclareOption{pantoneblack7}{
+	\set@wwu@maincolor{pantoneblack7}
+}
+\DeclareOption{pantone234}{
+	\set@wwu@maincolor{pantone234}
+}
+\DeclareOption{pantone7462}{
+	\set@wwu@maincolor{pantone7462}
+}
+\DeclareOption{pantone312}{
+	\set@wwu@maincolor{pantone312}
+}
+\DeclareOption{pantone315}{
+	\set@wwu@maincolor{pantone315}
+}
+\DeclareOption{pantone3135}{
+	\set@wwu@maincolor{pantone3135}
+}
+\DeclareOption{pantone369}{
+	\set@wwu@maincolor{pantone369}
+}
+\DeclareOption{pantone390}{
+	\set@wwu@maincolor{pantone390}
+}
 
 \renewcommand*{\maketitle}{\make@poster@title}
 
@@ -109,7 +126,7 @@
 \fi
 
 % save the specified color as “maincolor”
-\colorlet{maincolor}{\bg@maincolor}
+\colorlet{maincolor}{\main@color}
 % do font setup if “manualfonts” wasn’t specified
 \if@manualfonts\else
 	\RequirePackage{wwustyle/meta-office-pro}
