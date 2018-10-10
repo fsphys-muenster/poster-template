@@ -31,7 +31,7 @@
 \begin{document}
 
 \twocolumn[%
-	\posterauthor{Name, Name der Arbeitsgruppe, Institut, \ldots}
+	\posterauthor{Name, Name der Arbeitsgruppe, Institut, \dots}
 
 	\postersubject{Name des Projekts}
 
@@ -39,17 +39,16 @@
 ]
 
 \begin{posterbox}
-	\vspace{-10mm}
-	\raggedright
-
-	\section*{Erläuterungen zur\\Datei \texttt{poster.tex}}
-	Die Postergröße muss mithilfe der Option \verb+a0paper+ oder \verb+a1paper+ eingestellt werden (andere Größen stehen nicht zur Verfügung).
+	\section*{Erläuterungen zur Datei \texttt{poster.tex}}
+	Die Postergröße muss mithilfe der Option \texttt{a0paper} oder \texttt{a1paper} eingestellt werden (andere Größen stehen nicht zur Verfügung).
 	Für den Text wird die Schriftart „Meta Office Pro“ verwendet.
 
-	Der Text in diesem Dokument ist bewusst mit \LaTeX-Befehlen wie \verb+\vspace+ und \verb+\raggedright+ durchsetzt.
+	Der Text in diesem Dokument ist bewusst mit \LaTeX-Befehlen wie \verb+\vfill+ durchsetzt.
 	Es wird sich bei der Gestaltung von Postern nicht vermeiden lassen, Räume und Formatierungen manuell zu setzen.
 
-	Die Umgebung \verb+posterbox+ entspricht dem Befehl \verb+\fbox+, zeichnet jedoch einen Rahmen in der jeweils gewählten Sonderfarbe.
+	Die Umgebung \texttt{posterbox} verhält sich ähnlich wie der Befehl \verb+\fbox+, zeichnet jedoch einen Rahmen in der jeweils gewählten Sonderfarbe.\footnote{%
+		Fußnoten verhalten sich wie in \texttt{minipage}-Umgebungen.
+	}
 
 	Die Befehle \verb+\author+ und \verb+\title+ sind in dieser Poster-Vorlage wirkungslos.
 	\verb+\posterauthor+ und \verb+\postersubject+ setzen den ihnen übergebenen Text in der entsprechenden Formatierung.
@@ -62,9 +61,6 @@
 \vfill
 
 \begin{posterbox}
-	\vspace{-10mm}
-	\raggedright
-
 	\section*{Einführung}
 	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.
 \end{posterbox}
@@ -72,27 +68,21 @@
 \vfill
 
 \begin{posterbox}
-	\vspace{-10mm}
-	\raggedright
-
 	\section*{Methoden}
 	Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat. Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse molestie consequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
 
-	$$
-	 p\!\left(X_{vi} = 1\right) = \frac{\exp\!\left(\theta_v - \sigma_i\right)\strut}
-	 {\strut 1 + \exp\!\left(
-	 \theta_v - \sigma_i\right)}
-	$$
+	\begin{equation}
+		p\!\left(X_{vi} = 1\right)
+		= \frac{\exp\!\left(\theta_v - \sigma_i\right)\strut}
+		{\strut 1 + \exp\!\left(\theta_v - \sigma_i\right)}
+	\end{equation}
 
 	Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
 \end{posterbox}
 
-\newpage
+\vfill
 
 \begin{posterbox}
-	\vspace{-10mm}
-	\raggedright
-
 	\section*{Ergebnisse}
 	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh. Donec sodales sagittis magna. Sed consequat, leo eget bibendum sodales, augue velit cursus nunc, quis gravida magna mi a libero. Fusce vulputate eleifend et arcu. Duis arcu tortor, suscipit eget, imperdiet nec, imperdiet iaculis, ipsum.
 \end{posterbox}
@@ -100,25 +90,23 @@
 \vfill
 
 \begin{posterbox}
-	\vspace{-10mm}
-	\raggedright
-
 	\section*{Fazit}
-	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.
+	Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante.
 \end{posterbox}
 
 \vfill
 
 \begin{posterbox}
-	\vspace{-10mm}
-	\raggedright
-
 	\section*{Literatur/Verweise}
 	\subsection*{Literatur}
 	Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
 
 	\subsection*{Verweise}
-	Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	\begin{itemize}
+		\item Consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua.
+		\item At vero eos et accusam et justo duo dolores et ea rebum.
+		\item Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.
+	\end{itemize}
 \end{posterbox}
 
 \end{document}
