@@ -27,6 +27,11 @@
 \RequirePackage{tikz}
 \RequirePackage{adjustbox}
 
+% remove space at the end of the document if pgf is loaded, see
+% https://tex.stackexchange.com/a/454395
+\let\wwu@pgffix=\newpage
+\AtEndDocument{\wwu@pgffix}
+
 % available font and background colors
 % CMYK color values have been taken from the WWU corporate design manual
 % https://sso.uni-muenster.de/intern/marketing/corporatedesign/cdmanual.html
@@ -50,7 +55,7 @@
 	\renewcommand*{\main@color}{#1}%
 }
 
-%% ========= possible package options ===========================
+%% =============== possible package options =====================
 \DeclareOption{pantoneblack7}{
 	\set@wwu@maincolor{pantoneblack7}
 }
@@ -135,7 +140,7 @@
 \fi
 
 
-%% ========= Images and Graphics ============
+%% =============== images and graphics ==========================
 
 % the claim with \includegraphics
 %% parameter #1: scale
@@ -152,7 +157,7 @@
 \newcommand*{\make@poster@title}{%
  {%
  \setlength{\unitlength}{1mm}%
- \begin{tikzpicture}[remember picture,overlay]
+ \begin{tikzpicture}[remember picture, overlay]
     %% Querbalken oben
     \node [anchor=north west] at (current page.north west)
     [rectangle,
@@ -169,7 +174,7 @@
     minimum width=\paperwidth,
     fill=maincolor
     ] {};
-    \node [xshift=\posterLogoXShift,yshift=\posterLogoYShift] at (current page.north west)
+    \node [xshift=\posterLogoXShift, yshift=\posterLogoYShift] at (current page.north west)
     {\wwulogoposter{\posterLogoScale}};
     %% the claim
     \node [xshift=\posterClaimXShift, yshift=\posterClaimYShift, inner sep=0, anchor=south west] at (current page.south west)
