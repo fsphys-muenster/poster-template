@@ -21,9 +21,11 @@
 %              Fachschaft Physik (fsphys@uni-muenster.de)
 
 %% =============== required packages ============================
-\RequirePackage{tikz}
+\RequirePackage{calc}
 \RequirePackage{xcolor}
 \RequirePackage{graphicx}
+\RequirePackage{tikz}
+\RequirePackage{adjustbox}
 
 % available font and background colors
 % CMYK color values have been taken from the WWU corporate design manual
@@ -306,62 +308,30 @@
 
 \newcommand*{\posterauthor}[1]{{\large #1\par}\vskip1\baselineskip}
 
-% posterbox is essentially \fbox
-\newbox\@posterfbox
+\newlength{\wwu@fboxrule}
+\newlength{\wwu@fboxsep}
+\setlength{\wwu@fboxrule}{1pt}
+\setlength{\wwu@fboxsep}{10mm}
 
-\newcommand*{\posterbox}{%
-    \fboxsep=10mm%
-    \fboxrule=1pt%
-    \setbox\@posterfbox\vbox\bgroup%
-    \hsize=\linewidth%
-    \advance\hsize by -2\fboxsep%
-    \advance\hsize by -2\fboxrule%
-}
+\let\wwu@parboxrestore=\@parboxrestore
 
-\def\endposterbox{\egroup{\posterfbox{\box\@posterfbox}}}
-
-\long\def\posterfbox#1{%
-  \leavevmode%
-  \setbox\@tempboxa\hbox{%
-    \color@begingroup%
-      \kern\fboxsep{#1}\kern\fboxsep%
-    \color@endgroup}%
-  \poster@frameb@x\relax}
-
-\def\poster@frameb@x#1{%
-  \@tempdima\fboxrule%
-  \advance\@tempdima\fboxsep%
-  \advance\@tempdima\dp\@tempboxa%
-  \hbox{%
-    \lower\@tempdima\hbox{%
-      \vbox{%
-    \color@begingroup%
-    \color{maincolor}%
-        \hrule\@height\fboxrule%
-    \color@endgroup%
-        \hbox{%
-    \color@begingroup%
-    \color{maincolor}%
-          \vrule\@width\fboxrule%
-    \color@endgroup%
-          #1%
-          \vbox{%
-            \vskip\fboxsep%
-            \box\@tempboxa%
-            \vskip\fboxsep}%
-          #1%
-    \color@begingroup%
-    \color{maincolor}%
-          \vrule\@width\fboxrule%
-    \color@endgroup%
-          }%
-    \color@begingroup%
-    \color{maincolor}%
-        \hrule\@height\fboxrule%
-    \color@endgroup%
-      }%
-    }%
-  }%
+\newenvironment{posterbox}{%
+	% redefine \@parboxrestore to have minipage behave like normal text
+	% see https://tex.stackexchange.com/q/454265
+	\def\@parboxrestore{%
+		\let\-\@dischyph%
+		\let\'\@acci\let\`\@accii\let\=\@acciii%
+		\everypar{}%
+		\let\if@nobreak\iffalse%
+		\let\if@noskipsec\iffalse%
+		\let\par\@@par%
+		\linewidth\hsize%
+	}%
+	\begin{adjustbox}{minipage=\linewidth-2\wwu@fboxrule-2\wwu@fboxsep, cfbox=maincolor {\the\wwu@fboxrule} {\the\wwu@fboxsep}}%
+		\let\@parboxrestore=\wwu@parboxrestore%
+		\raggedright%
+}{%
+	\end{adjustbox}%
 }
 
 \pagestyle{empty}
