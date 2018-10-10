@@ -245,7 +245,14 @@
 \fi
 \setlength\marginparpush{5\p@}
 \setlength\footnotesep{6.65\p@}
-\setlength{\skip\footins}{9\p@ \@plus 4\p@ \@minus 2\p@}
+\setlength{\skip\footins}{16\p@ \@plus 4\p@ \@minus 2\p@}
+\skip\@mpfootins=\skip\footins
+% use more distance between footnote rule and first footnote
+\renewcommand*{\footnoterule}{%
+	\kern-9\p@%
+	\hrule\@width.4\columnwidth%
+	\kern8.6\p@% the \hrule is .4pt high
+}
 \setlength\floatsep    {12\p@ \@plus 2\p@ \@minus 2\p@}
 \setlength\textfloatsep{20\p@ \@plus 2\p@ \@minus 4\p@}
 \setlength\intextsep   {12\p@ \@plus 2\p@ \@minus 2\p@}
