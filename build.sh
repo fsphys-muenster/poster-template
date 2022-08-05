@@ -81,7 +81,7 @@ for d in de/beispiele en/examples; do
 			sed -i "s/pantone312]/$options]/" "$filename.tex"
 			# run compilations
 			latexmk "-$latex_engine" -interaction=nonstopmode -silent \
-				"$filename.tex"
+				-norc "$filename.tex"
 		done
 	done
 	# remove source files
