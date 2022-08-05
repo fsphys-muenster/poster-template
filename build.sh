@@ -77,8 +77,8 @@ for d in de/beispiele en/examples; do
 			filename=$(echo "${options}_${size}" | sed 's/,/_/g')
 			cp poster.tex "$filename.tex"
 			# set options in the TeX file
-			sed -i "s/a1paper]{article}/$size]{article}/" "$filename.tex"
-			sed -i "s/pantone312]/$options]/" "$filename.tex"
+      sed -i "s/documentclass\[\(.*\)a1paper\(.*\)\]{article}/documentclass[\1$size\2]{article}/" "$filename.tex"
+      sed -i "s/usepackage\[\(.*\)pantone312\(.*\)\]{wwustyle/usepackage[\1$options\2]{wwustyle/" "$filename.tex"
 			# run compilations
 			latexmk "-$latex_engine" -interaction=nonstopmode -silent \
 				"$filename.tex"
